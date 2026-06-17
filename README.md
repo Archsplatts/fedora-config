@@ -2,10 +2,6 @@ Script post installation Fedora avec une configuration Sway
 
 ![script](preview.png)
 
-# --- Authentification --- #
-
-Gestionnaire de connexion	sddm
-
 # --- Eléments de l'interface --- #
 
 Barre d'état					waybar
@@ -19,16 +15,6 @@ Indicateur de volume/Caps Lock	swayosd
 Emulateur de terminal	foot
 
 Shell					zsh 
-
-# --- Audio & périphériques --- #
-
-Gestion audio 				pipewire,wireplumber,pavucontrol
-Gestion de l'alimentation	swayidle,swaylock
-
-# --- Configuration Clavier & souris --- #
-
-Disposition clavier	fr
-numlock	activé au démarrage (sddm+sway)
 
 # --- Paquets et outils --- #
 
