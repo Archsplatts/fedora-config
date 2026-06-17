@@ -1,0 +1,9 @@
+#!/bin/bash
+
+dnf check-update -C --quiet &>/dev/null
+
+if [ $? -eq 100 ]; then
+    echo "update"
+else
+    echo "ok"
+fi   

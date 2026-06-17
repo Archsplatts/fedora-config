@@ -1,0 +1,41 @@
+#!/bin/bash
+
+options="BraveSearch\0icon\x1fbrave
+DocsFedora\0icon\x1fdistributor-logo-fedora
+Korben\0icon\x1fdistributor-logo-calculate-linux
+ManjaroForum\0icon\x1fmanjaro
+Movix\0icon\x1fcom.github.artemanufrij.playmyvideos
+ProtonDB\0icon\x1fdistributor-logo-steamos
+Twitch\0icon\x1ftwitch-indicator
+Youtube\0icon\x1fyoutube"
+
+selection=$(echo -e "$options" | rofi -dmenu -show-icons -icon-theme "Papirus" -config ~/.config/rofi/web-menu.rasi)
+
+if [[ -n "$selection" ]]; then
+    case "$selection" in
+   		"BraveSearch")
+   		   	 brave-origin https://search.brave.com 
+   		   	 ;;  
+   		"DocsFedora")
+   			brave-origin https://docs.fedoraproject.org/fr/docs/
+   			;;   
+  		"Korben")
+  			brave-origin https://korben.info
+  			;;          
+		"ManjaroForum")
+			brave-origin https://forum.manjaro.org/c/announcements/11
+			;;
+		"Movix")
+			brave-origin https://movix.bet
+			;;
+        "ProtonDB")
+            brave-origin https://www.protondb.com
+            ;;
+		"Twitch")
+			firefox https://www.twitch.tv/eloetcraquotte
+            ;;
+        "Youtube")                    
+            brave-origin https://www.youtube.com
+             ;; 
+    esac
+fi   

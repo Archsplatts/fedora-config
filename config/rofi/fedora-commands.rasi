@@ -1,0 +1,48 @@
+@import "themes/catppuccin-default"
+
+configuration {
+    font: "Ubuntu Regular 13";
+}
+
+window {
+	background-color:	rgba(36,39,58,0.90);  
+	transparency:		"real";
+	border:           	2px;
+	border-color:		@blue;
+	border-radius:	  	18;	    
+    width:            	640px;        
+}
+
+mainbox {
+	padding: 14px;
+}
+
+listview {
+	border: 	0; 
+	columns:  	1;
+    lines:    	22;
+ 	padding:  	2px 0px 0px;
+	scrollbar:	false;
+    spacing:  	6px;    
+}
+
+inputbar {
+    enabled: false;
+}   
+
+element-text {
+    text-color: inherit;
+}
+
+element selected normal, element selected active {
+    background-color:	inherit;
+    text-color:         @text;
+  }
+
+element normal normal {
+	background-color:	transparent;
+}
+element alternate normal {
+    background-color:	transparent;
+    text-color: 		@text;
+}

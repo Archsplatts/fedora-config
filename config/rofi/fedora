@@ -1,0 +1,23 @@
+Mettre à jour le système	sudo dnf upgrade --refresh
+
+Installer un paquet			sudo dnf install <nom_du_paquet>   
+
+Supprimer un paquet		sudo dnf remove <nom_du_paquet>   
+
+Rechercher un paquet		dnf search <terme>   
+
+Nettoyer le cache			sudo dnf clean all   
+
+Lister les paquets			dnf repoquery --installed   
+
+Lister les paquets			dnf repoquery --userinstalled   
+(User installed)
+
+Mise à niveau				dnf system-upgrade --releasever=45 download
+
+Gérer les groupes de 		dnf group list
+paquets					sudo dnf group install "Fedora Workstation"  
+
+--skip-unavailable
+-y = pas de confirmation
+  

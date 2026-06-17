@@ -1,0 +1,6 @@
+#!/bin/bash
+
+FEDORA_CMD="$HOME/.config/rofi/fedora"
+
+cat "$FEDORA_CMD" | rofi -dmenu -i -p "Commandes Fedora:" \
+  -show run -config ~/.config/rofi/fedora-commands.rasi

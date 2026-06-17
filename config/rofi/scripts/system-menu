@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Afficher le menu et capturer la sélection
+selection=$(echo -e "󰶚 Vérifier les mises à jour\n󰂪  Installer les mises à jour\n  Firmwares\n󰃢 Nettoyer le cache dnf\n  Paquets orphelins\n󰁯  Sauvegarde Timeshift"| rofi -dmenu -config ~/.config/rofi/system-menu.rasi)
+
+# Vérifier si une sélection a été faite
+if [[ -n "$selection" ]]; then
+    case "$selection" in
+        "󰶚 Vérifier les mises à jour")
+			foot --hold sh -c "dnf check-update || true"
+			;;
+		"󰂪  Installer les mises à jour")
+            foot --hold sh -c "sudo dnf upgrade --refresh -y || true"
+            ;;
+        "  Firmwares")
+			foot --hold sh -c "fwupdmgr --force refresh && fwupdmgr get-updates || true"
+			;;
+        "󰃢 Nettoyer le cache dnf")
+            foot --hold sh -c "sudo dnf clean packages -y || true"
+            ;;
+        "  Paquets orphelins")
+        	foot --hold sh -c "sudo dnf autoremove -y || true"
+            ;;
+        "󰁯  Sauvegarde Timeshift")
+			foot --hold sh -c "sudo timeshift --create || true"
+			;;
+    esac
+fi   
