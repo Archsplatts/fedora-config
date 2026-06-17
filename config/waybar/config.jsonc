@@ -58,17 +58,17 @@
     "icon-size": 20,
     "spacing": 10   
     },
-
-    "custom/updates": {
+   
+	"custom/updates": {
+		"exec": "$HOME/.config/waybar/scripts/dnf-status",
+		"interval": 10800,
     	"format":"{icon}",
 	  	"format-icons": {
     		"update": "",
     		"ok": "󰕥",
     		"default": "󰕥"
-    	},
-    	"exec": "~/.config/waybar/scripts/dnf-status",
-    	"interval": 10800,
-    	"on-click": ".config/rofi/scripts/system-menu",
+    	},  
+    	"on-click": "$HOME/.config/rofi/scripts/system-menu",
     	"tooltip": false,
     	"tooltip-format": "Mises à jour disponibles"
     },
