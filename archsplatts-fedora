@@ -1,0 +1,154 @@
+#!/bin/bash
+
+set -e
+
+# Définition des couleurs
+VERT='\033[0;32m'
+ROUGE='\033[0;31m'
+JAUNE='\033[1;33m'
+NC='\033[0m'
+
+# Vérification des droits root
+if [ "$EUID" -ne 0 ]; then 
+  echo -e "${ROUGE}Veuillez lancer ce script avec sudo ou en root.${NC}"
+  exit 1
+fi   
+
+USER="$SUDO_USER"
+
+echo -e "${VERT}                                   ▄▄                    ${NC}"
+echo -e "${VERT}                  █▄                ██       █▄  █▄      ${NC}"
+echo -e "${VERT}       ▄          ██                ██      ▄██▄▄██▄     ${NC}"
+echo -e "${VERT} ▄▀▀█▄ ████▄▄███▀ ████▄ ▄██▀█ ████▄ ██ ▄▀▀█▄ ██  ██ ▄██▀█${NC}"
+echo -e "${VERT} ▄█▀██ ██   ██    ██ ██ ▀███▄ ██ ██ ██ ▄█▀██ ██  ██ ▀███▄${NC}"
+echo -e "${VERT}▄▀█▄██▄█▀  ▄▀███▄▄██ ███▄▄██▀▄████▀▄██▄▀█▄██▄██ ▄███▄▄██▀${NC}"
+echo -e "${VERT}                              ██                         ${NC}"
+echo -e "${VERT}                              ▀                          ${NC}"
+
+echo -e "${JAUNE}Bienvenue dans le script de configuration Archsplatts pour Fedora !${NC}\n"
+
+if [ -t 0 ]; then
+    read -p "Appuyez sur Entrée pour continuer... "
+fi   
+
+# --- 1.Mise à jour --- #
+echo -e "${JAUNE}Mise à jour de Fedora${NC}\n"
+
+if dnf upgrade --refresh -y; then
+    echo -e "${VERT}✓ Mise à jour terminée avec succès.${NC}"
+else
+    echo -e "${ROUGE}✗ Échec de la mise à jour.${NC}"
+    exit 1
+fi
+
+# --- 2.Activation du dépôt RPM Fusion --- #
+echo -e "${JAUNE}Activation du dépôt RPM Fusion${NC}\n"
+
+if dnf install "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm";then
+   echo -e "${VERT}✓ Dépôts RPM activés avec succès.${NC}"
+else
+    echo -e "${ROUGE}✗ Échec de l'activation des dépôts RPM.${NC}"
+    exit 1
+fi
+
+# --- 3.Installation des pilotes video,codecs multimedia --- #
+if dnf swap ffmpeg-free ffmpeg --allowerasing;then
+	echo -e "${VERT}✓ Installation de ffmpeg réussie.${NC}"
+else
+	echo -e "${ROUGE}✗ Echec de l'Installation de ffmpeg.${NC}"
+ exit 1
+fi
+
+if dnf update @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin;then
+	echo -e "${VERT}✓ Installation des codecs additionels réussie.${NC}"
+else
+	echo -e "${ROUGE}✗ Echec de l'Installation des codecs additionels.${NC}"
+ exit 1
+fi
+
+if dnf install -y mesa-va-drivers-freeworld mesa-va-drivers-freeworld.i686;then
+	echo -e "${VERT}✓ Installation des codecs mesa réussie.${NC}"
+else
+	echo -e "${ROUGE}✗ Echec de l'installation des codecs mesa.${NC}"
+exit 1
+fi
+
+# --- 4.Activation des dépôts COPR --- #
+if dnf copr enable atim/starship erikreider/packages ilyaz/LACT lihaohong/yazi tofik/nwg-shell;then
+echo -e "${VERT}✓ Activation des dépôts COPR réussie.${NC}"
+else
+	echo -e "${ROUGE}✗ Echec de l'activation des dépôts COPR.${NC}"
+exit 1
+fi
+
+# --- 5.Installation des paquets COPR --- #
+PAQUETS_COPR=(
+	"lact" 
+	"nwg-displays" 
+	"nwg-look"
+	"starship"
+	"swayosd-git"
+	"yazi"
+)
+if dnf install -y "${PAQUETS_COPR[@]}";then
+echo -e "${VERT}✓ Installation des paquets COPR réussie.${NC}"
+else
+	echo -e "${ROUGE}✗ Echec de l'installation des paquets COPR.${NC}"
+exit 1
+fi
+
+# --- 6.Installation des utilitaires --- #
+PAQUETS_UTILS=(
+	"bat"
+	"btop"
+	"calcurse"
+	"cava"
+	"cliphist"
+	"discord"
+	"fastfetch"
+	"ffmpegthumbnailer"
+	"flameshot"
+	"galculator"
+	"gamemode"
+	"gamemode-devel"
+	"gammastep"
+	"geany"
+	"helvum"
+	"java-25-openjdk"
+	"mako"
+	"mangohud"
+	"micro"
+	"papirus-icon-theme"
+	"rhythmbox"
+	"ristretto"
+	"steam"
+	"thunderbird"
+	"timeshift"
+	"trash-cli"
+	"xfce-polkit"
+	"zathura"
+	"zathura-pdf-mupdf"
+	"zsh"
+	"zsh-autosuggestions"
+	"zsh-syntax-highlighting"
+)
+
+echo -e "${JAUNE}Installation des utilitaires${NC}\n"
+
+if dnf install -y "${PAQUETS_UTILS[@]}" || true; then
+    echo -e "${VERT}✓ Utilitaires installés avec succès.${NC}"
+else
+    echo -e "${ROUGE}✗ Échec de l'installation.${NC}"
+    exit 1
+fi
+
+# --- 7.Configuration du shell --- #
+echo -e "${JAUNE}Configuration du shell Zsh${NC}\n"
+
+if getent passwd "$USER" | grep -q "/bin/zsh$"; then
+    echo -e "${VERT}✓ Le shell est déjà Zsh pour $USER. Aucune action requise.${NC}"
+else
+    echo "Changement du shell vers Zsh..."
+    chsh -s /bin/zsh "$USER"
+    echo -e "${VERT}✓ Shell changé avec succès.${NC}"
+fi
