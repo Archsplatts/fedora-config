@@ -110,7 +110,7 @@
 		
 # --- Autostart --- #
 
-	exec_always killall autotiling; autotiling
+	exec autotiling &
 	exec gammastep   
 	exec nm-applet --indicator
     exec mako
