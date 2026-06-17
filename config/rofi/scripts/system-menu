@@ -10,7 +10,7 @@ if [[ -n "$selection" ]]; then
 			foot --hold sh -c "dnf check-update || true"
 			;;
 		"󰂪  Installer les mises à jour")
-            foot --hold sh -c "sudo dnf upgrade --refresh -y || true"
+            foot --hold sh -c "sudo dnf upgrade --refresh -y && pkill -RTMIN+1 waybar || true"
             ;;
         "  Firmwares")
 			foot --hold sh -c "fwupdmgr --force refresh && fwupdmgr get-updates || true"
