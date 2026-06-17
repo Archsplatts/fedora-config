@@ -1,9 +1,12 @@
 #!/bin/bash
 
-dnf check-update -C --quiet &>/dev/null
+dnf check-update --quiet &>/dev/null
+result=$?
 
-if [ $? -eq 100 ]; then
+if [ $result -eq 100 ]; then
     echo "update"
-else
+elif [ $result -eq 0 ]; then
     echo "ok"
-fi   
+else
+    echo "error"
+fi
