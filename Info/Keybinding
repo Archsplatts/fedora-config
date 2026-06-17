@@ -1,0 +1,32 @@
+mod+A	Alarmes
+mod+Z
+mod+E	Gestionnaire de fichiers
+mod+R   Rofi Files
+mod+T   
+mod+Y	Yazi
+mod+U
+mod+I	Fichiers Info
+mod+O
+mod+P   Pavucontrol
+mod+Q	Fermer la fenêtre
+mod+S   System menu
+mod+D	Menu des applications
+mod+F	Plein ecran
+mod+G   Ouvrir une session guitarix/rhythmbox/cava
+mod+H	Afficher les raccourcis clavier
+mod+J
+mod+K
+mod+L	
+mod+M   
+mod+W   Editeur de texte 
+mod+X
+mod+C	Panneau de configuration
+mod+V	Clipboard manager
+mod+B	Menu favoris internet
+mod+N   Network manager
+
+mod+Entrée	Terminal
+mod+Shift+E Powermenu
+mod+Shift+R Fond d'écran aléatoire
+mod+Shift+F Commandes Fedora
+mod+Shift+C Recharger la config sway
