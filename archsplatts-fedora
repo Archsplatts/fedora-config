@@ -31,8 +31,9 @@ if [ -t 0 ]; then
     read -p "Appuyez sur Entrée pour continuer... "
 fi   
 
-# --- 1.Mise à jour --- #
-echo -e "${JAUNE}Mise à jour de Fedora${NC}\n"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${JAUNE}[1/7] Mise à jour de Fedora${NC}"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 if dnf upgrade --refresh -y; then
     echo -e "${VERT}✓ Mise à jour terminée avec succès.${NC}"
@@ -41,8 +42,9 @@ else
     exit 1
 fi
 
-# --- 2.Activation du dépôt RPM Fusion --- #
-echo -e "${JAUNE}Activation du dépôt RPM Fusion${NC}\n"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${JAUNE}[2/7] Activation du dépôt RPM Fusion${NC}"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 if dnf install "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm";then
    echo -e "${VERT}✓ Dépôts RPM activés avec succès.${NC}"
@@ -51,7 +53,10 @@ else
     exit 1
 fi
 
-# --- 3.Installation des pilotes video,codecs multimedia --- #
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${JAUNE}[3/7] Installation des pilotes video & codecs ${NC}"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
+
 if dnf swap ffmpeg-free ffmpeg --allowerasing;then
 	echo -e "${VERT}✓ Installation de ffmpeg réussie.${NC}"
 else
@@ -73,7 +78,10 @@ else
 exit 1
 fi
 
-# --- 4.Activation des dépôts COPR --- #
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${JAUNE}[4/7] Activation des dépôts COPR${NC}"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
+
 if dnf copr enable atim/starship erikreider/packages ilyaz/LACT lihaohong/yazi tofik/nwg-shell;then
 echo -e "${VERT}✓ Activation des dépôts COPR réussie.${NC}"
 else
@@ -81,7 +89,10 @@ else
 exit 1
 fi
 
-# --- 5.Installation des paquets COPR --- #
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${JAUNE}[5/7] Installation des paquets COPR${NC}"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
+
 PAQUETS_COPR=(
 	"lact" 
 	"nwg-displays" 
@@ -97,7 +108,10 @@ else
 exit 1
 fi
 
-# --- 6.Installation des utilitaires --- #
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${JAUNE}[6/7] Installation des utilitaires${NC}"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
+
 PAQUETS_UTILS=(
 	"bat"
 	"btop"
@@ -142,8 +156,9 @@ else
     exit 1
 fi
 
-# --- 7.Configuration du shell --- #
-echo -e "${JAUNE}Configuration du shell Zsh${NC}\n"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${JAUNE}[7/7] Configuration du shell Zsh${NC}"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 if getent passwd "$USER" | grep -q "/bin/zsh$"; then
     echo -e "${VERT}✓ Le shell est déjà Zsh pour $USER. Aucune action requise.${NC}"
@@ -152,3 +167,18 @@ else
     chsh -s /bin/zsh "$USER"
     echo -e "${VERT}✓ Shell changé avec succès.${NC}"
 fi
+
+# Calcul de la durée
+END_TIME=$(date +%s)
+DURATION=$((END_TIME - START_TIME))
+MINUTES=$((DURATION / 60))
+SECONDES=$((DURATION % 60))
+
+# Résumé final
+echo -e "${VERT}╔════════════════════════════════════════╗${NC}"
+echo -e "${VERT}║  Installation terminée avec succès !   ║${NC}"
+echo -e "${VERT}╚════════════════════════════════════════╝${NC}"
+echo ""
+echo -e "${BLEU}Durée totale : ${MINUTES}m ${SECONDES}s${NC}"
+echo ""
+echo -e "${JAUNE}⚠ Veuillez redémarrer votre système pour appliquer tous les changements.${NC}"
