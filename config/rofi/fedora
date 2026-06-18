@@ -6,18 +6,17 @@ Supprimer un paquet		sudo dnf remove <nom_du_paquet>
 
 Rechercher un paquet		dnf search <terme>   
 
-Nettoyer le cache			sudo dnf clean all   
+Info paquet installé			rpm -qi
+
+Info paquet dépôts			dnf info	
+
+Nettoyer le cache			sudo dnf clean packages 
+							sudo dnf clean all   
 
 Lister les paquets			dnf repoquery --installed   
-
-Lister les paquets			dnf repoquery --userinstalled   
-(User installed)
+							dnf repoquery --userinstalled   
 
 Mise à niveau				dnf system-upgrade --releasever=45 download
 
-Gérer les groupes de 		dnf group list
-paquets					sudo dnf group install "Fedora Workstation"  
-
---skip-unavailable
--y = pas de confirmation
-  
+Options					-y = pas de confirmation --skip-unavailable
+ 
