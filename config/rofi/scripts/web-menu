@@ -32,7 +32,7 @@ if [[ -n "$selection" ]]; then
             brave-origin https://www.protondb.com
             ;;
 		"Twitch")
-			firefox https://www.twitch.tv/eloetcraquotte
+			firefox https://www.twitch.tv
             ;;
         "Youtube")                    
             brave-origin https://www.youtube.com
