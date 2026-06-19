@@ -14,7 +14,7 @@ selection=$(echo -e "$options" | rofi -dmenu -show-icons -icon-theme "Papirus" -
 if [[ -n "$selection" ]]; then
     case "$selection" in
    		"BraveSearch")
-   		   	 brave-origin https://search.brave.com 
+   		   	brave-origin https://search.brave.com 
    		   	 ;;  
    		"DocsFedora")
    			brave-origin https://docs.fedoraproject.org/fr/docs/
