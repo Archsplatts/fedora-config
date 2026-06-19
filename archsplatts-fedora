@@ -138,6 +138,7 @@ PAQUETS_UTILS=(
 	"steam"
 	"thunderbird"
 	"timeshift"
+	"transmission"
 	"trash-cli"
 	"xfce-polkit"
 	"zathura"
