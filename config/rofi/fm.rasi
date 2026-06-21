@@ -13,7 +13,7 @@ configuration {
 	disable-history:     	true;
     show-icons: true; 
      icon-theme:          	"Papirus-Dark";            
-    font: "Ubuntu Regular 12";               
+    font: "UbuntuNerd Font 12";               
     display-recursivebrowser: "   Fichiers";          
     display-filebrowser: "  Fichiers"; 
     kb-delete-entry: "Shift+Delete"; 
