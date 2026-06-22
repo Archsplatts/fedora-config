@@ -1,22 +1,18 @@
-Mettre à jour le système	sudo dnf upgrade --refresh
+	--- Mise à jour --- 
 
-Installer un paquet			sudo dnf install <nom_du_paquet>   
+󰶚  dnf check-update
+󰚰  sudo dnf upgrade --refresh
 
-Supprimer un paquet		sudo dnf remove <nom_du_paquet>   
+	--- Paquets --- 
+	
+  dnf search <terme>   
+  sudo dnf install <paquet>   
+󱧖  sudo dnf remove <paquet>   
 
-Rechercher un paquet		dnf search <terme>   
+  rpm -qi (paquet installé) 
+   dnf info (paquet dépôt)
 
-Info paquet installé			rpm -qi
+	--- Nettoyage ---
 
-Info paquet dépôts			dnf info	
-
-Nettoyer le cache			sudo dnf clean packages 
-							sudo dnf clean all   
-
-Lister les paquets			dnf repoquery --installed   
-							dnf repoquery --userinstalled   
-
-Mise à niveau				dnf system-upgrade --releasever=45 download
-
-Options					-y = pas de confirmation --skip-unavailable
- 
+󰃢  sudo dnf clean packages	
+   sudo dnf clean all   
