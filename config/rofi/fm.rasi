@@ -33,7 +33,7 @@ window {
     location: center;
  	border:           	2px;
  	border-color:		@blue;
-    border-radius:  	18px;  
+    border-radius:  	14px;  
     padding:          	14px; 
 }
 
@@ -46,13 +46,12 @@ mainbox {
 
 inputbar {
     background-color:  	@surface0;
-    border-radius:  	16px;
+    border-radius:  	12px;
 	children:   		[ prompt, entry ];
 	padding:    		8px 16px;
     spacing:    		8px;   
     border: 0px 0px 2px 0px;
     border-color : @blue;
-    border-radius:                  16px;
 }
 
 prompt {
