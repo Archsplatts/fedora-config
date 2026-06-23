@@ -3,14 +3,14 @@
 * {
     border: none;
     font-family: UbuntuMono Nerd Font, Font Awesome;
-   	font-size: 15px;
-   	font-weight: bold;
-	min-height: 0;
+   	font-size: 16px;
+   	font-weight: 500;
+    min-height: 0;
     padding: 0px;
 }
 
 window#waybar {
-    background-color: rgba(49, 50, 68, 0.85);
+	background-color: rgba(30, 30, 46, 0.85);
     color: @text;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     border-radius: 12px; 
@@ -29,35 +29,34 @@ tooltip label {
 }
 
  #workspaces {
- 	background-color: transparent;		
- }
+ 	background-color: transparent;
+ 	font-weight: 600;
+}
 
 #workspaces button {
-    padding: 0 6px;
     background-color: transparent;
     color: @overlay1;
-    border: none;
-    box-shadow: none;
-    text-shadow: none;
-    border-radius: 10px;
+    border-radius: 8px;
     margin: 4px 2px;
+    font-weight: 600;
+    
 }
 
 #workspaces button:hover {
-    box-shadow: inherit;
-    text-shadow: inherit;
     background-image: linear-gradient(0deg, @surface1, @mantle);
+    font-weight: 700;
 }
 
 #workspaces button.focused {
 	 color: @blue;  
-     box-shadow: none;
-     background-color: @surface1;
+     background-color: transparent;
      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+     font-weight: 800;
 }
 
 #workspaces button.urgent {
     background-image: linear-gradient(0deg, @red, @mantle);
+    font-weight: 700;
 }
 
 #taskbar button.active {
@@ -76,9 +75,7 @@ tooltip label {
 #temperature,
 #disk,
 #custom-updates,
-#custom-kernel,
 #custom-power,
-#custom-help,
 #custom-menu,
 #tray menu,
 #tray {
@@ -141,10 +138,10 @@ label:focus {
 
 #custom-menu {
 	background-color: transparent;
-	color: @blue;
+	color: @sky;
 	padding-left: 10px;
 	padding-right: 14px;
-	font-size: 20px;	
+	font-size: 19px;	
 }
 
 #tray {
@@ -160,71 +157,70 @@ label:focus {
     background-color: @mantle;
 }
 
-#custom-updates {
-	color: @mauve;
-	font-size: 16px;
-	padding-right: 13px;
-}
-
-#cpu {
-	color: @blue;
-}
-
-#memory {
-	color: @lavender;
-}
-
-#temperature {
-    min-width: 37px;
-    color: @sapphire;
-}
-
-#temperature.warning {
-    color: @peach;
-}
-
-#temperature.critical {
-	color: @red;
-}
-
-#custom-help {
-	color: @pink;
-}
-
-#custom-kernel {
-	color: @overlay2;
-}
-
 #disk {
-    color: @peach;
+    color: @pink;
 }
 
 #disk.warning {
     color: @maroon;
 }
 
+#custom-updates {
+	color: @mauve;
+}
+
+#memory {
+	color: @lavender;
+	font-weight: 600;
+}
+
+#cpu {
+	color: @blue;
+	font-weight: 600;
+}
+
+#temperature {
+    min-width: 37px;
+    color: @sapphire;
+    font-weight: 600;
+}
+
+#temperature.warning {
+    color: @peach;
+    font-weight: 600;
+}
+
+#temperature.critical {
+	color: @red;
+	font-weight: 600;
+}
+
 #pulseaudio {
     padding-left: 8px;
     padding-right: 12px;
     color: @sky;
+    font-weight: 600;
 }
 
 #pulseaudio.muted {
     color: @red;
+    font-weight: 600;
 }
 
 #clock {
 	color: @teal;
+	font-weight: 600;
 }
 
 #custom-power {
 	margin: 0;
 	padding-left: 0px;
+	padding-bottom: 1px;
 	color: #FFFFFF;
-	font-size: 16px;
+	font-size: 17px;
 }
 
- #cpu, #memory, #temperature, #custom-help, #disk, #clock {
+#memory, #cpu, #temperature, #disk, #clock {
 	margin: 0;
 	padding: 6px;
 }
