@@ -9,7 +9,7 @@ window {
 	transparency:		"real";
 	border:           	2px;
 	border-color:		@blue;
-	border-radius:	  	18;
+	border-radius:	  	14;
 	location:         	west;
 	margin: 			0px 0px 0px 8px;	    
     width:            	350px;        
