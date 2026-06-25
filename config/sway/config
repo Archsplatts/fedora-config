@@ -120,7 +120,7 @@
     exec mako
 	exec swayosd-server
 	exec /usr/libexec/xfce-polkit
-    exec wl-paste --watch cliphist store --max-items 100
+    exec wl-paste --watch cliphist store
     exec ~/.config/waybar/scripts/dnf-status
 
 # --- Bar --- #
