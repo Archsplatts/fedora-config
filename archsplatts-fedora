@@ -79,32 +79,31 @@ exit 1
 fi
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[4/7] Activation des dépôts COPR${NC}"
+echo -e "${JAUNE}[4/7] Activation du dépôt terra${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
-if dnf copr enable atim/starship erikreider/packages ilyaz/LACT lihaohong/yazi tofik/nwg-shell;then
-echo -e "${VERT}✓ Activation des dépôts COPR réussie.${NC}"
+if dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release;then
+echo -e "${VERT}✓ Activation du dépôt terra réussi.${NC}"
 else
-	echo -e "${ROUGE}✗ Echec de l'activation des dépôts COPR.${NC}"
+	echo -e "${ROUGE}✗ Echec de l'activation du dépôt terra.${NC}"
 exit 1
 fi
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[5/7] Installation des paquets COPR${NC}"
+echo -e "${JAUNE}[5/7] Installation des paquets terra${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
-PAQUETS_COPR=(
+PAQUETS_TERRA=(
 	"lact" 
-	"nwg-displays" 
-	"nwg-look"
+ 	"nwg-look"
 	"starship"
 	"swayosd-git"
 	"yazi"
 )
-if dnf install -y "${PAQUETS_COPR[@]}";then
-echo -e "${VERT}✓ Installation des paquets COPR réussie.${NC}"
+if dnf install -y "${PAQUETS_TERRA[@]}";then
+echo -e "${VERT}✓ Installation des paquets terra réussie.${NC}"
 else
-	echo -e "${ROUGE}✗ Echec de l'installation des paquets COPR.${NC}"
+	echo -e "${ROUGE}✗ Echec de l'installation des paquets terra.${NC}"
 exit 1
 fi
 
