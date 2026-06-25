@@ -54,7 +54,7 @@ else
 fi
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[3/7] Installation des pilotes video & codecs ${NC}"
+echo -e "${JAUNE}[3/7] Installation des pilotes video & codecs${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 if dnf swap ffmpeg-free ffmpeg --allowerasing;then
@@ -149,7 +149,7 @@ PAQUETS_UTILS=(
 
 echo -e "${JAUNE}Installation des utilitaires${NC}\n"
 
-if dnf install -y "${PAQUETS_UTILS[@]}" || true; then
+if dnf install -y "${PAQUETS_UTILS[@]}"; then
     echo -e "${VERT}✓ Utilitaires installés avec succès.${NC}"
 else
     echo -e "${ROUGE}✗ Échec de l'installation.${NC}"
