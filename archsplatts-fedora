@@ -97,7 +97,9 @@ PAQUETS_TERRA=(
 	"lact" 
  	"nwg-look"
 	"starship"
-	"swayosd-git"
+	"SwayOSD"
+	"ubuntu-nerd-fonts"
+	"ubuntumono-nerd-fonts"
 	"yazi"
 )
 if dnf install -y "${PAQUETS_TERRA[@]}";then
