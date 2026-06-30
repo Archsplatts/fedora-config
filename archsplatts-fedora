@@ -131,6 +131,7 @@ PAQUETS_UTILS=(
 	"geany"
 	"helvum"
 	"java-25-openjdk"
+	"lxqt-policykit
 	"mako"
 	"mangohud"
 	"micro"
@@ -142,7 +143,6 @@ PAQUETS_UTILS=(
 	"thunderbird"
 	"timeshift"
 	"trash-cli"
-	"xfce-polkit"
 	"zathura"
 	"zathura-pdf-mupdf"
 	"zsh"
