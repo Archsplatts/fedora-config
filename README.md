@@ -4,7 +4,7 @@ Script post installation Fedora avec une configuration Sway
 
 # --- Eléments de l'interface --- #
 
-Barre d'état					waybar
+Barre d'état					waybar\n
 Lanceur d'applications			rofi
 Gestion des fenêtres			sway,autotiling
 Notifications 					mako
