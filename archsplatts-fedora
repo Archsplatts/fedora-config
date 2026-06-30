@@ -131,7 +131,7 @@ PAQUETS_UTILS=(
 	"geany"
 	"helvum"
 	"java-25-openjdk"
-	"lxqt-policykit
+	"lxqt-policykit"
 	"mako"
 	"mangohud"
 	"micro"
