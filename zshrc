@@ -3,11 +3,15 @@ export EDITOR="micro"
 export MICRO_TRUECOLOR=1
 
 # --- Fedora --- #
+alias dnfi="sudo dnf install"
+alias dnflist="dnf repoquery --installed > Info/dnflist"
+alias dnfr="sudo dnf remove"
+alias dnfs="dnf search"
+alias dnfu="sudo dnf upgrade --refresh -y"
 alias orphans="sudo dnf autoremove -y"
-alias pkglist="dnf repoquery --installed > Info/Pkglist && dnf repoquery --userinstalled > Info/Userlist"
-alias update="sudo dnf upgrade --refresh -y"
+alias qi="rpm -qi"
 
-# --- File manager --- #
+# --- Fichiers --- #
 alias bar="yazi .config/waybar"
 alias cdt="cd ~/Téléchargements"
 alias conf="yazi .config"
@@ -15,19 +19,21 @@ alias fm="yazi"
 alias info="yazi Info"
 alias rof="yazi .config/rofi"
 
-# --- Papirus-folders --- #
-alias pfl="~/.scripts/papirus-folders -l"
-alias pfc="~/.scripts/papirus-folders -C"
-
 # --- Système --- #
 alias cache="dust .cache"
 alias error="journalctl -p 3 -xb"
+alias firmwares="fwupdmgr --force refresh && fwupdmgr get-updates"
 alias rm="trash -v"
-alias zshrc="micro .zshrc"
+alias update-grub="sudo grub2-mkconfig -o /etc/grub2.cfg"
+alias zshrc="micro .zshrc && source ~/.zshrc"
 
 # --- Utilitaires --- #
 alias c="clear"
 alias ff="fastfetch"
+alias ls="eza"
+alias pfl="~/.scripts/papirus-folders -l"
+alias pfc="~/.scripts/papirus-folders -C"
+alias wipe="cliphist wipe && rm -r ~/.cache/cliphist/db"
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
