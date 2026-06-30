@@ -1,27 +1,27 @@
-Script post installation Fedora avec une configuration Sway
+Script post installation Fedora avec une configuration SwayFX
 
 ![script](preview.png)
 
 # --- Eléments de l'interface --- #
 
-Barre d'état					  waybar <br> 
-Lanceur d'applications  rofi <br> 
-Gestion des fenêtres		sway,autotiling <br> 
-Notifications 					mako <br> 
-Indicateur	            swayosd <br> 
+Barre d'état: waybar <br> 
+Lanceur d'applications: rofi <br> 
+Gestion des fenêtres: swayfx,autotiling <br> 
+Notifications: mako <br> 
+Indicateur: swayosd <br> 
 
 # --- Terminal & shell --- #
 
-Emulateur de terminal	foot
+Emulateur de terminal: foot
 
-Shell					zsh 
+Shell: zsh 
 
 # --- Paquets et outils --- #
 
-Navigateur					      firefox <br> 
-Editeur de texte			    geany,micro <br> 
-Gestionnaire de fichiers	thunar,yazi <br> 
-Surveillance système		  btop <br> 
-Calendrier					      calcurse <br> 
-Contrôle GPU				      lact <br> 
-Jeux						          steam <br> 
+Navigateur: brave origin,firefox <br> 
+Editeur de texte: geany,micro <br> 
+Gestionnaire de fichiers: thunar,yazi <br> 
+Surveillance système: btop <br> 
+Calendrier: calcurse <br> 
+Contrôle GPU: lact <br> 
+Jeux: steam <br> 
