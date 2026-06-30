@@ -4,11 +4,11 @@ Script post installation Fedora avec une configuration Sway
 
 # --- Eléments de l'interface --- #
 
-Barre d'état					waybar
-Lanceur d'applications			rofi
-Gestion des fenêtres			sway,autotiling
-Notifications 					mako
-Indicateur de volume/Caps Lock	swayosd
+Barre d'état					  waybar <br> 
+Lanceur d'applications  rofi <br> 
+Gestion des fenêtres		sway,autotiling <br> 
+Notifications 					mako <br> 
+Indicateur	            swayosd <br> 
 
 # --- Terminal & shell --- #
 
@@ -18,10 +18,10 @@ Shell					zsh
 
 # --- Paquets et outils --- #
 
-Navigateur					firefox
-Editeur de texte			geany,micro
-Gestionnaire de fichiers	thunar,yazi
-Surveillance système		btop
-Calendrier					calcurse
-Contrôle GPU				lact
-Jeux						steam
+Navigateur					      firefox <br> 
+Editeur de texte			    geany,micro <br> 
+Gestionnaire de fichiers	thunar,yazi <br> 
+Surveillance système		  btop <br> 
+Calendrier					      calcurse <br> 
+Contrôle GPU				      lact <br> 
+Jeux						          steam <br> 
