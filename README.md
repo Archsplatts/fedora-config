@@ -12,7 +12,7 @@ Indicateur: swayosd <br>
 
 # --- Terminal & shell --- #
 
-Emulateur de terminal: foot
+Emulateur de terminal: foot <br> 
 Shell: zsh 
 
 # --- Paquets et outils --- #
