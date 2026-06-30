@@ -5,7 +5,7 @@ Script post installation Fedora avec une configuration SwayFX
 # --- Eléments de l'interface --- #
 
 Barre d'état: waybar <br> 
-Lanceur d'applications: rofi <br> 
+Lanceur: rofi <br> 
 Gestion des fenêtres: swayfx,autotiling <br> 
 Notifications: mako <br> 
 Indicateur: swayosd <br> 
