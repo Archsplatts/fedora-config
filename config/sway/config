@@ -10,7 +10,7 @@ set $texteditor geany
 # --- Output configuration --- #
 
 output HDMI-A-1 resolution 1920x1080 position 0,0
-output * bg ~/Images/Wallpapers/harbor.jpg fill
+output * bg ~/Images/Wallpapers/crane.png fill
 
 # --- Input configuration --- #
 
@@ -30,7 +30,7 @@ blur disable
 blur_passes 2
 blur_radius 3
 blur_noise 0.05
-corner_radius 10
+corner_radius 8
 shadows enable
 shadow_blur_radius 10
 
@@ -60,6 +60,7 @@ bindsym XF86Messenger exec discord
 bindsym Print exec flameshot gui
 bindsym XF86Calculator exec galculator
 
+bindsym $mod+Escape exec foot --hold btop
 bindsym $mod+q kill
 bindsym $mod+f fullscreen
 bindsym $mod+Shift+c reload
@@ -98,6 +99,7 @@ bindsym $mod+Shift+Right move right
 
 for_window [app_id="flameshot"] floating enable
 for_window [app_id="galculator"] floating enable
+for_window [app_id="lxqt-policykit-agent"] floating enable
 for_window [app_id="nm-connection-editor"] floating enable
 for_window [app_id="nwg-look"] floating enable
 for_window [app_id="pavucontrol"] floating enable
@@ -108,7 +110,7 @@ for_window [app_id="thunar" title="Renommer"] floating enable
 for_window [app_id="transmission"] floating enable
 for_window [class="VirtualBox" title="VirtualBox - Preferences"] floating enable
 for_window [app_id="xarchiver"] floating enable
-for_window [app_id="lxqt-policykit-agent"] floating enable
+for_window [app_id="xdg-desktop-portal-gtk"] resize set width 800 height 550
 
 # --- Workspaces --- #
 
