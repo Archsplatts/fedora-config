@@ -1,17 +1,17 @@
 {
 	"layer": "top",
 	"position": "top",
-	"height": 32,
+	"height": 30,
  	"margin-left": 8, 
 	"margin-right": 8,
-	"margin-top": 5,
-	"spacing": 5,
+	"margin-top": 4,
+	"spacing": 8,
 	
-	"modules-left": [ "custom/updates", "clock", "sway/window" ],
+	"modules-left": [ "custom/updates", "sway/workspaces", "sway/window" ],
 
-	"modules-center": [ "sway/workspaces" ],
+	"modules-center": [ "clock" ],
 	
-	"modules-right": [ "pulseaudio", "pulseaudio/slider", "tray", "custom/power" ],
+	"modules-right": ["pulseaudio", "tray", "custom/power" ],
 
     "custom/updates": {
 		"exec": "$HOME/.config/waybar/scripts/dnf-status",
@@ -29,10 +29,13 @@
     },
 
 	"clock": {
-		"format": "  {:%H:%M}",
+		"locale": "fr_FR.UTF-8",
+		"format": "{:L%A %H:%M}  ",
 		"tooltip-format": "{calendar}",
+		"tooltip-delay": 0, 
 	          "calendar": {
 	              "mode": "month",
+	              "on-scroll": 1,
 	              "format": {
 	                  "months": "<span color='#cba6f7'><b>{}</b></span>",
 	                  "days": "<span color='#cdd6f4'><b>{}</b></span>",
@@ -42,7 +45,7 @@
 	    },
 		"interval": 60,
 		"timezone": "Europe/Paris",
-		"on-click": "foot calcurse"
+		"on-click": "foot calcurse",
 	},    
 
 	"sway/window": {
@@ -60,8 +63,16 @@
         "2": [],
         "3": []     
     },
-	"sort-by-number": true,
-	"cursor": true
+	//"sort-by-number": true,
+	//"cursor": true
+	 "format": "{icon}",
+     "format-icons": {
+        "1": "",
+        "2": "",
+        "3": "",
+        "focused": "󰮯",
+        "default": ""
+     }
 	},
 
 	"pulseaudio": {
@@ -71,7 +82,7 @@
     	"format-icons": {
         	"alsa_output.pci-0000_00_1f.3.analog-stereo": "",
         	"alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
-        	"headphone": "",
+        	"headphone": "󰋋",
         	"hands-free": "",
         	"headset": "",
         	"phone": "",
@@ -85,13 +96,7 @@
     "ignored-sinks": ["Easy Effects Sink"]
 	},
 
-"pulseaudio/slider": {
-	"min": 0,
-	"max": 100,
-	"orientation": "horizontal"
-},
-
-	"tray": {
+   	"tray": {
     	"icon-size": 20,
     	"spacing": 8,
     },
@@ -99,17 +104,7 @@
 	"custom/power": {
 		"format": "",
 		"icon-size": 19,
-		"on-click": "~/.config/rofi/scripts/powermenu",
+		"on-click": "$HOME/.config/rofi/scripts/powermenu",
 		"tooltip-format": "Power Menu"
-	},
-
-  "disk#ssd": {
-        "interval": 60,
-        "format": "󰋊 {percentage_used}%",
-        "warning": 70,
-        "critical": 80,
-	    "tooltip": true,
-	 	"tooltip-format": "{specific_used:.0f} Go utilisés",
-        "unit": "GB"
-    }
+	}
 }
