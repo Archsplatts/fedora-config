@@ -5,11 +5,12 @@
     font-family: UbuntuMono Nerd Font, Font Awesome;
     font-size: 16px;
     min-height: 0;
+	margin: 0;
     padding: 0;
 }
 
 window#waybar {
-    background-color: rgba(30, 30, 46, 0.90);
+    background-color: rgba(30, 30, 46, 0.80);
     color: @text;
     box-shadow: none;
     border-radius: 8px;
@@ -32,20 +33,25 @@ label:focus {
     background-color: @mantle;
 }
 
-#clock,
-#pulseaudio,
-#disk,
 #custom-updates,
+#clock,
+#disk,
+#volume,
 #custom-power,
 #tray {
     padding: 0 10px;
-    margin: 4px 2px;
+    margin-left: 0;
+    margin-right: 0;
 }
 
-#window,
+#window {
+	font-weight: 500;
+}
+
 #workspaces {
     margin: 0 2px 0 4px;
-}
+    padding-right: 0;
+   }
 
 #workspaces button {
     background-color: transparent;
@@ -57,13 +63,14 @@ label:focus {
 }
 
 #workspaces button.focused {
-    color: @mantle;
-    background: @blue;
+    color: @blue;
+    background: transparent;
     font-weight: 700;
 }
 
 #workspaces button.urgent {
-    background-image: linear-gradient(0deg, @red, @mantle);
+    background: transparent;
+    color: @red;
     font-weight: 700;
 }
 
@@ -77,8 +84,9 @@ label:focus {
 }
 
 #tray {
-    margin: 0;
-    padding-right: 3;
+	padding-left: 0;
+    padding-right: 0;
+    margin-right: 0;
 }
 
 #tray menu {
@@ -112,28 +120,28 @@ label:focus {
 }
 
 #custom-updates {
-    color: @blue;
+    color: @text;
     font-size: 20px;
-    padding-right: 0;
 }
 
 #custom-power {
-    margin: 0;
-    padding-left: 0;
     color: #FFFFFF;
     font-size: 17px;
+	padding-left: 2px;
 }
 
 #clock {
     color: @text;
     font-weight: 600;
+    padding-left: 0;
     padding-right: 0;
 }
 
 #disk {
     color: @text;
-    padding-right: 0;
     font-weight: 600;
+    padding-right: 0;
+    padding-left: 0;
 }
 
 #disk.warning {
@@ -144,7 +152,7 @@ label:focus {
     color: @text;
     font-weight: 600;
     font-size: 20px;
-    padding-right: 10px;
+	padding-right: 8px;
 }
 
 #pulseaudio.muted {
@@ -155,7 +163,10 @@ label:focus {
 #pulseaudio-slider slider {
     all: unset;
     opacity: 0;
-    padding-right: 0px;
+	margin: 0;
+	margin-left: 8px;
+    padding: 0;
+    
 }
 
 #pulseaudio-slider trough {
