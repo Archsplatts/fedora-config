@@ -19,99 +19,6 @@ input type:keyboard {
 	xkb_numlock enabled 
 }
 
-# --- Appearance & FX --- #
-
-gaps inner 8
-default_border pixel 2
-default_floating_border pixel 2
-default_orientation auto
-
-blur disable
-blur_passes 2
-blur_radius 3
-blur_noise 0.05
-corner_radius 8
-shadows enable
-shadow_blur_radius 10
-
-for_window [app_id="foot"] blur enable
-
-layer_effects "mako" { 
-	blur enable 
-	blur_ignore_transparent enable 
-}
-
-layer_effects "rofi" { 
-	blur enable 
-	blur_ignore_transparent enable 
-}
-
-# --- Keybinding --- #
-
-bindsym $mod+Return exec $term
-bindsym $mod+e exec $filemanager
-bindsym $mod+d exec $menu
-bindsym $mod+w exec $texteditor
-
-bindsym XF86HomePage exec $web
-bindsym XF86Tools exec aimp
-bindsym XF86Mail exec thunderbird
-bindsym XF86Messenger exec discord
-bindsym Print exec flameshot gui
-bindsym XF86Calculator exec galculator
-
-bindsym $mod+Escape exec foot --hold btop
-bindsym $mod+q kill
-bindsym $mod+f fullscreen
-bindsym $mod+Shift+c reload
-bindsym $mod+space floating toggle
-
-bindsym $mod+a exec ~/.config/rofi/scripts/alarm-window
-bindsym $mod+r exec rofi -show filebrowser -config .config/rofi/fm.rasi
-bindsym $mod+s exec ~/.config/rofi/scripts/system-menu
-bindsym $mod+g exec ~/.config/sway/scripts/guitar
-bindsym $mod+h exec ~/.config/rofi/scripts/show-keybinding
-bindsym $mod+c exec ~/.config/rofi/scripts/menu-config
-bindsym $mod+v exec cliphist list | rofi -dmenu -p "󰏢 Clipboard" -config .config/rofi/clipboard.rasi | cliphist decode | wl-copy
-bindsym $mod+b exec ~/.config/rofi/scripts/web-menu
-bindsym $mod+Shift+e exec ~/.config/rofi/scripts/powermenu
-bindsym $mod+Shift+r exec ~/.config/sway/scripts/rand-wallpaper
-bindsym $mod+Shift+f exec ~/.config/rofi/scripts/fedora-commands
-bindsym $mod+Shift+b exec ~/.config/rofi/scripts/bookmarks
-	
-bindsym $mod+y exec foot -e yazi
-bindsym $mod+i exec foot -e yazi Info
-bindsym $mod+p exec pavucontrol
-bindsym $mod+n exec nm-connection-editor
-bindsym $mod+Shift+s exec foot --hold bat ~/Info/scat || true
-	
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right  
- 
-# --- Floating windows --- #
-
-for_window [app_id="flameshot"] floating enable
-for_window [app_id="galculator"] floating enable
-for_window [app_id="lxqt-policykit-agent"] floating enable
-for_window [app_id="nm-connection-editor"] floating enable
-for_window [app_id="nwg-look"] floating enable
-for_window [app_id="pavucontrol"] floating enable
-for_window [class="steam" title="Liste de contacts"] floating enable
-for_window [app_id="thunar" title="Confirmer le remplacement des fichiers"] floating enable
-for_window [app_id="thunar" title="Opération sur des fichiers en cours"] floating enable
-for_window [app_id="thunar" title="Renommer"] floating enable
-for_window [app_id="transmission"] floating enable
-for_window [class="VirtualBox" title="VirtualBox - Preferences"] floating enable
-for_window [app_id="xarchiver"] floating enable
-for_window [app_id="xdg-desktop-portal-gtk"] resize set width 800 height 550
-
 # --- Workspaces --- #
 
 bindsym $mod+ampersand workspace number 1
@@ -128,21 +35,7 @@ bindsym --locked XF86AudioRaiseVolume exec swayosd-client --output-volume raise
 bindsym --locked XF86AudioLowerVolume exec swayosd-client --output-volume lower
 bindsym --locked XF86AudioMute exec swayosd-client --output-volume mute-toggle
 bindsym --locked XF86AudioMicMute exec swayosd-client --input-volume mute-toggle   
-
 bindsym --release Caps_Lock exec swayosd-client --caps-lock
-
-# --- Autostart --- #
-
-exec autotiling &
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY 
-exec gammastep   
-exec mako
-exec nm-applet --indicator
-exec swayosd-server
-exec systemctl --user import-environment XDG_CURRENT_DESKTOP
-exec /usr/libexec/lxqt-policykit-agent   
-exec wl-paste --watch cliphist store
-exec ~/.config/waybar/scripts/dnf-status
 
 # --- Bar --- #
 
