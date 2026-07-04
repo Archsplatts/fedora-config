@@ -6,9 +6,8 @@ Script post installation Fedora avec une configuration Mangowm
 
 Barre d'état: waybar <br> 
 Lanceur: rofi <br> 
-Gestion des fenêtres: swayfx,autotiling <br> 
+Gestion des fenêtres: mangowm <br> 
 Notifications: mako <br> 
-Indicateur: swayosd <br> 
 
 # --- Terminal & shell --- #
 
