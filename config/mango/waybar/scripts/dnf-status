@@ -1,0 +1,12 @@
+#!/bin/bash
+
+dnf check-update --quiet &>/dev/null
+result=$?
+
+if [ $result -eq 100 ]; then
+    echo '{"text": "MàJ", "alt": "update", "tooltip": "Mises à jour disponibles"}'
+elif [ $result -eq 0 ]; then
+    echo '{"text": "À jour", "alt": "ok", "tooltip": "Système à jour"}'
+else
+    echo '{"text": "Err", "alt": "error", "tooltip": "Erreur de vérification"}'
+fi   
