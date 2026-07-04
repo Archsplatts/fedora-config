@@ -1,4 +1,4 @@
-Script post installation Fedora avec une configuration SwayFX
+Script post installation Fedora avec une configuration Mangowm
 
 ![script](preview.png)
 
