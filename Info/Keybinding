@@ -1,32 +1,32 @@
-mod+A	Alarmes
-mod+Z
-mod+E	Gestionnaire de fichiers
-mod+R   Rofi Files
-mod+T   
-mod+Y	Yazi
-mod+U
-mod+I	Fichiers Info
-mod+O
-mod+P   Pavucontrol
-mod+Q	Fermer la fenêtre
-mod+S   System menu
-mod+D	Menu des applications
-mod+F	Plein ecran
-mod+G   Ouvrir une session guitarix/rhythmbox/cava
-mod+H	Afficher les raccourcis clavier
-mod+J
-mod+K
-mod+L	
-mod+M   
-mod+W   Editeur de texte 
-mod+X
-mod+C	Panneau de configuration
-mod+V	Clipboard manager
-mod+B	Menu favoris internet
-mod+N   Network manager
+SUPER+A	Alarmes
+SUPER+Z
+SUPER+E	Gestionnaire de fichiers
+SUPER+R Recharger la config
+SUPER+T Layout par défaut (dwindle)  
+SUPER+Y	Yazi
+SUPER+U
+SUPER+I	Fichiers Info
+SUPER+O
+SUPER+P Powermenu
+SUPER+Q	Fermer la fenêtre
+SUPER+S System menu
+SUPER+D	Menu des applications
+SUPER+F	Plein ecran
+SUPER+G Ouvrir une session soundshed-guitar/rhythmbox
+SUPER+H	Afficher les raccourcis clavier
+SUPER+J
+SUPER+K
+SUPER+L	Changer de layout
+SUPER+M   
+SUPER+W Editeur de texte 
+SUPER+X
+SUPER+C	Panneau de configuration
+SUPER+V	Clipboard manager
+SUPER+B	Menu favoris internet
+SUPER+N Network manager
 
-mod+Entrée	Terminal
-mod+Shift+E Powermenu
-mod+Shift+R Fond d'écran aléatoire
-mod+Shift+F Commandes Fedora
-mod+Shift+C Recharger la config sway
+SUPER+Entrée	Terminal
+SUPER+Shift+E Powermenu
+SUPER+Shift+R Recharger waybar
+SUPER+Shift+F Commandes Fedora
+SUPER+Shift+L Layout menu
