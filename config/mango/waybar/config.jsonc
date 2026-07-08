@@ -5,53 +5,40 @@
 	"spacing": 5,
 	"reload_style_on_change": true,
 	
-	"modules-left": [ "custom/updates", "clock" ],
+	"modules-left": [ "custom/menu", "dwl/window" ],
 
-	"modules-center": [ "ext/workspaces" ],
+	"modules-center": [ "group/clock-tags" ],
 	
 	"modules-right": [ "group/power-tray" ],
 
-    "custom/updates": {
-		"exec": "$HOME/.config/waybar/scripts/dnf-status",
-		"interval": 21600,
-		"return-type": "json",
-    	"format":"{icon}",
-		"justify": "center",
-	  	"format-icons": {
-    		"update": "",
-    		"ok": "",
-    		"default": ""
-    	},  
-		"signal": 1,
-    	"on-click": "$HOME/.config/rofi/scripts/system-menu",
-    	"tooltip": true,
-    },
+	"custom/menu": {
+		"format": "",
+		"on-click": "rofi -show drun -config $HOME/.config/rofi/applications-menu.rasi",
+		"tooltip": false
+	},
 
   "ext/workspaces": {
-	 "num-tags": 5,
+	 "num-tags": 3,
 	 "format": "{icon}",
      "format-icons": {
         "1": "",
         "2": "",
         "3": "",
-        "4": "",
-        "5": "",
         "active": "󰮯",
         "default": ""
      }
 	},
 	
  "dwl/window": {
-    "format": "{title}",
-    "max-length":35,
-    	"rewrite": {
-    		"foot": "Terminal"
-  }
+    "format": "{}",
+    "icon": true,
+    "icon-size": 20,
+    "max-length": 35
 },
 
 	"clock": {
 		"locale": "fr_FR.UTF-8",
-		"format": "󰥔  {:%H:%M}",
+		"format": "   {:%H:%M  |}",
 		"tooltip-format": "{calendar}",
 		"tooltip-delay": 0, 
 	          "calendar": {
@@ -61,12 +48,12 @@
 	                  "months": "<span color='#cba6f7'><b>{}</b></span>",
 	                  "days": "<span color='#cdd6f4'><b>{}</b></span>",
 	  	              "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
-	                  "today": "<span color='#f5e0dc'><b><u>{}</u></b></span>",
+	                  "today": "<span color='#f5e0dc'><b><u>{}</u></b></span>"
 	          },
 	    },
 		"interval": 60,
 		"timezone": "Europe/Paris",
-		"on-click": "foot calcurse",
+		"on-click": "foot calcurse"
 	},    
 
 	"pulseaudio": {
@@ -92,7 +79,7 @@
 
    	"tray": {
     	"icon-size": 20,
-    	"spacing": 8,
+    	"spacing": 8
     },
 
 	"custom/power": {
@@ -102,9 +89,45 @@
 		"tooltip-format": "Power Menu"
 	},
 
+	"disk#ssd": {
+		"interval": 60,
+		"format": "󰋊 {percentage_used}%",
+		"warning": 70,
+		"critical": 80,
+		"tooltip": true,
+		"tooltip-format": "{specific_used:.0f} Go utilisés",
+		"unit": "GB",
+		"on-click": "foot --hold dust"
+	},
+
+	"memory": {
+		"interval": 30,
+		"format": "  {used:0.1f}G",
+		"max-length": 10,
+		"on-click": "foot --hold btop",
+		"tooltip": false
+	},
+
+	"cpu": {
+		"interval": 10,
+		"format": "  {usage}%",
+		"on-click": "foot --hold btop",
+		"tooltip": false	
+	},
+
 	"group/power-tray": {
 		 "orientation": "horizontal",
-		 "modules": [ "pulseaudio", "tray", "custom/power", ]
+		 "modules": [ "pulseaudio", "tray", "custom/power" ]
+	},
+
+	"group/clock-tags": {
+		 "orientation": "horizontal",
+		 "modules": [ "clock", "ext/workspaces" ]
+	},
+
+	"group/monitor": {
+		"orientation": "horizontal",
+		"modules": [ "disk#ssd", "cpu", "memory" ]
 	},
 
 }
