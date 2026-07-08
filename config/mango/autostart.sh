@@ -4,8 +4,6 @@ set +e
 
 systemctl --user start xdg-desktop-portal.service --ignore-dependencies &
 
-~/.config/waybar/scripts/dnf-status &
-
 mako >/dev/null 2>&1 &
 
 gammastep >/dev/null 2>&1 &
