@@ -10,7 +10,7 @@
 }
 
 window#waybar {
-    background: rgba(30, 30, 46, 0.90);
+    background: rgba(30, 30, 46, 0.8);
     color: @text;
     box-shadow: none;
     text-shadow: none;
@@ -32,10 +32,7 @@ label:focus {
     background-color: @mantle;
 }
 
-#custom-updates,
 #clock,
-#disk,
-#keyboard-state,
 #volume,
 #custom-power,
 #tray {
@@ -44,9 +41,21 @@ label:focus {
     margin-right: 0;
 }
 
+#custom-menu {
+	color: @blue;
+	padding: 0px 6px;
+	padding-right: 16px;
+	font-size: 22px;
+}
+
+#window {
+	padding-left: 8px;
+}
+
 #workspaces {
 	background: transparent;
-    margin: 4px 0px 4px 0px;
+	border-radius: 5px;
+    margin: 0px 0px 0px 0px;
     padding: 0px 8px;
    }
 
@@ -82,7 +91,13 @@ label:focus {
 
 #power-tray {
 	background: transparent;
-    margin: 2px 4px 2px 0px;
+    margin: 0px 0px 0px 0px;
+	padding-left: 0px;
+}
+
+#clock-tags {
+	background: transparent;
+	border-radius: 5px;
 	padding-left: 0px;
 }
 
@@ -116,16 +131,8 @@ label:focus {
     background-color: @mantle;
 }
 
-#custom-updates {
-	background: transparent;
-    color: @blue;
-    font-size: 20px;
-    padding-right: 16px;
-    margin: 2px 0px 2px 4px;
-}
-
 #custom-power {
-	background: @base;
+	background: transparent;
     color: #FFFFFF;
     font-size: 17px;
 	margin-left: 0px;
@@ -134,14 +141,10 @@ label:focus {
 
 #clock {
 	background: transparent;
-    color: @text;
+    color: @subtext1;
     font-weight: 600;
-    padding: 0px 8px;
-    margin: 2px 0px 2px 0px;
-}
-
-#keyboard-state {
-	background: @blue;
+    padding: 0px 0px;
+    margin: 0px 0px 0px 2px;
 }
 
 #pulseaudio {
@@ -156,6 +159,27 @@ label:focus {
 #pulseaudio.muted {
     color: @red;
     font-weight: 600;
+}
+
+#disk {
+	color: @teal;
+}
+
+#cpu {
+	color: @blue;
+}
+
+#memory {
+	color: @lavender;
+}
+
+#disk,#cpu {
+	padding-right: 9px;	
+}
+
+#monitor {
+	font-weight: 600;
+	padding: 0px 5px;
 }
 
 @keyframes blink {
