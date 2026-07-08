@@ -2,16 +2,14 @@
 	"layer": "top",
 	"position": "top",
 	"height": 30,
- 	"margin-left": 8, 
-	"margin-right": 8,
-	"margin-top": 4,
-	"spacing": 8,
+	"spacing": 5,
+	"reload_style_on_change": true,
 	
-	"modules-left": [ "custom/updates", "sway/workspaces", "sway/window" ],
+	"modules-left": [ "custom/updates", "sway/window" ],
 
-	"modules-center": [ "clock" ],
+	"modules-center": [ "group/clock-tags" ],
 	
-	"modules-right": ["pulseaudio", "tray", "custom/power" ],
+	"modules-right": [ "group/power-tray" ],
 
     "custom/updates": {
 		"exec": "$HOME/.config/waybar/scripts/dnf-status",
@@ -28,9 +26,33 @@
     	"tooltip": true,
     },
 
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"persistent-workspaces": {
+        "1": [],
+        "2": [],
+        "3": []     
+    },
+	 "format": "{icon}",
+     "format-icons": {
+        "1": "",
+        "2": "",
+        "3": "",
+        "focused": "󰮯",
+        "default": ""
+     }
+	},
+
+	"sway/window": {
+		"format": "{}",
+		"icon": true,
+		"icon-size": 20,
+		"max-length":35
+	},
+
 	"clock": {
 		"locale": "fr_FR.UTF-8",
-		"format": "{:L%A %H:%M}  ",
+		"format": "󰥔  {:%H:%M  |}",
 		"tooltip-format": "{calendar}",
 		"tooltip-delay": 0, 
 	          "calendar": {
@@ -47,33 +69,6 @@
 		"timezone": "Europe/Paris",
 		"on-click": "foot calcurse",
 	},    
-
-	"sway/window": {
-		"max-length":35,
-		"rewrite": {
-			"foot": "Terminal",
-			"cava": ""
-		}
-	},
-
-	"sway/workspaces": {
-		"disable-scroll": true,
-		"persistent-workspaces": {
-        "1": [],
-        "2": [],
-        "3": []     
-    },
-	//"sort-by-number": true,
-	//"cursor": true
-	 "format": "{icon}",
-     "format-icons": {
-        "1": "",
-        "2": "",
-        "3": "",
-        "focused": "󰮯",
-        "default": ""
-     }
-	},
 
 	"pulseaudio": {
     	"format": "{icon}",
@@ -106,5 +101,16 @@
 		"icon-size": 19,
 		"on-click": "$HOME/.config/rofi/scripts/powermenu",
 		"tooltip-format": "Power Menu"
-	}
+	},
+
+	"group/power-tray": {
+		 "orientation": "horizontal",
+		 "modules": [ "pulseaudio", "tray", "custom/power" ]
+	},
+
+	"group/clock-tags": {
+		 "orientation": "horizontal",
+		 "modules": [ "clock", "sway/workspaces" ]
+	},
+
 }
