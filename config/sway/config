@@ -19,24 +19,6 @@ input type:keyboard {
 	xkb_numlock enabled 
 }
 
-# --- Workspaces --- #
-
-bindsym $mod+ampersand workspace number 1
-bindsym $mod+eacute workspace number 2
-bindsym $mod+quotedbl workspace number 3
-
-bindsym $mod+shift+ampersand move container to workspace 1
-bindsym $mod+shift+eacute move container to workspace 2
-bindsym $mod+shift+quotedbl move container to workspace 3
-
-# --- Utilities --- #
-
-bindsym --locked XF86AudioRaiseVolume exec swayosd-client --output-volume raise
-bindsym --locked XF86AudioLowerVolume exec swayosd-client --output-volume lower
-bindsym --locked XF86AudioMute exec swayosd-client --output-volume mute-toggle
-bindsym --locked XF86AudioMicMute exec swayosd-client --input-volume mute-toggle   
-bindsym --release Caps_Lock exec swayosd-client --caps-lock
-
 # --- Bar --- #
 
 bar { 
