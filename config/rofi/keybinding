@@ -1,24 +1,24 @@
-	  SUPER : Touche win 
+	  mod : Touche win 
 
-	󰍜  Applications : SUPER,d
-	󰪶  Fichiers : SUPER,e
-	  Terminal : SUPER,Entrée
+	󰍜  Applications : mod+d
+	󰪶  Fichiers : mod+e
+	  Terminal : mod+Entrée
 
 	󰈹  Navigateur : Accueil
 	󰝚  Audio : Media
 	  Mail : E-Mail
 	   Discord : Messenger
 
-	󰊓 Plein écran : SUPER,f
-	 Fermer : SUPER,q
-	    Focus : SUPER,flèches
+	󰊓 Plein écran : mod+f
+	 Fermer : mod+q
+	    Focus : mod+flèches
 
-	󰐥 Power Menu  : SUPER,p
-	󰏗 Menu système : SUPER,s
-	󰋅 Rock Setlist : SUPER,g
-	󰎞 Texte : SUPER,w
+	󰐥 Power Menu  : mod+p
+	󰏗 Menu système : mod+s
+	󰋅 Rock Setlist : mod+g
+	󰎞 Texte : mod+w
 	
-	󰔛  Alarmes : SUPER,a
-	  Config : SUPER,c
-	󰏢  Clipboard : SUPER,v
-	󰖟  Bookmarks : SUPER,b
+	󰔛  Alarmes : mod+a
+	  Config : mod+c
+	󰏢  Clipboard : mod+v
+	󰖟  Bookmarks : mod+b
