@@ -22,10 +22,10 @@ configuration {
 }
 
 window {
-	background-color:  	rgba(36,39,58,0.90);
-	border:           	2px;
+	background-color:  	rgba(30,30,46,0.95);
+	border:           	3px;
 	border-color:		@blue;
-    border-radius:  	14px;
+    border-radius:  	8px;
 	padding:          	14px;
 	transparency:		"real";
     width:          	450;  
