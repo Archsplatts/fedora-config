@@ -95,7 +95,6 @@ echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━
 
 PAQUETS_TERRA=(
 	"lact" 
-	"mangowm"
 	"nwg-look"
 	"starship"
 	"ubuntu-nerd-fonts"
@@ -128,6 +127,7 @@ PAQUETS_UTILS=(
 	"geany"
 	"helvum"
 	"java-25-openjdk"
+	"kernel-modules-extra"
 	"mako"
 	"mangohud"
 	"micro"
@@ -137,8 +137,8 @@ PAQUETS_UTILS=(
 	"ristretto"
 	"steam"
 	"thunderbird"
-	"timeshift"
 	"trash-cli"
+	"webkit2gtk4.1-devel"
 	"xfce-polkit"
 	"zathura"
 	"zathura-pdf-mupdf"
