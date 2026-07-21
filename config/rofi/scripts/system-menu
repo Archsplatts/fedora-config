@@ -1,25 +1,41 @@
 #!/bin/bash
 
 # Afficher le menu et capturer la sélection
-selection=$(echo -e "󰶚 Vérifier les mises à jour\n󰂪  Installer les mises à jour\n󰃢 Nettoyer le cache dnf\n  Paquets orphelins\n󰁯  Sauvegarde Timeshift" | rofi -dmenu -config ~/.config/rofi/system-menu.rasi)
+selection=$(echo -e "  Mettre le système à jour\n󰃢 Nettoyer le cache dnf\n  Paquets orphelins\n󰁯  Sauvegarde Timeshift" | rofi -dmenu -config ~/.config/rofi/system-menu.rasi)
 
 # Vérifier si une sélection a été faite
 if [[ -n "$selection" ]]; then
     case "$selection" in
-        "󰶚 Vérifier les mises à jour")
-			foot --hold sh -c "dnf check-update || true"
+        "  Mettre le système à jour")
+			foot sh -c '
+                updates=$(check-updates 2>/dev/null)
+                if [[ -z "$updates" ]]; then
+                    echo "Votre système est à jour."
+                else
+                    echo "Mises à jour disponibles :"
+                    echo "$updates"
+                    echo ""
+                    read -p "Voulez-vous installer ces mises à jour ? (o/N) : " confirm
+                    if [[ "$confirm" =~ ^[Oo]$ ]]; then
+                        sudo dnf upgrade -y --refresh
+                        pkill -SIGRTMIN+1 waybar || true
+                        echo "Mises à jour terminées."
+                    else
+                        echo "Opération annulée."
+                    fi
+                fi
+                echo ""
+                read -n 1 -s -p "Appuyez sur une touche pour quitter..."
+            '
 			;;
-		"󰂪  Installer les mises à jour")
-            foot --hold sh -c "sudo dnf upgrade --refresh -y && pkill -RTMIN+1 waybar || true"
-            ;;
        "󰃢 Nettoyer le cache dnf")
-            foot --hold sh -c "sudo dnf clean packages -y || true"
+            foot sh -c "sudo dnf -y clean packages || true; echo; read -n 1 -s -p 'Appuyez sur une touche pour quitter...'"
             ;;
         "  Paquets orphelins")
-        	foot --hold sh -c "sudo dnf autoremove -y || true"
+        	foot sh -c "sudo dnf -y autoremove || true; echo; read -n 1 -s -p 'Appuyez sur une touche pour quitter...'"
             ;;
         "󰁯  Sauvegarde Timeshift")
-			foot --hold sh -c "sudo timeshift --create || true"
+			foot sh -c "sudo timeshift --create || true; echo; read -n 1 -s -p 'Appuyez sur une touche pour quitter...'"
 			;;
     esac
 fi   
