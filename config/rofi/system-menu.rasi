@@ -1,7 +1,7 @@
 @import "themes/catppuccin-default"
 
 configuration {
-    font: "UbuntuNerd Font 15";  
+    font: "UbuntuNerd Font 14";  
 }
 
 window {
@@ -10,9 +10,9 @@ window {
 	modi: 				"drun,run";
 	show-icons: 		true;
 	icon-theme: 		"Papirus";
-	background-color:  	rgba(36,39,58,0.90);
+	background-color:  	rgba(30,30,46,0.90);
 	transparency:		"real";
-	border-radius:	  	14;
+	border-radius:	  	8px;
     padding:          	14;
     width:            	20%; 
 }
