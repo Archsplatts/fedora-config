@@ -27,13 +27,13 @@ filebrowser {
 }
 
 window {
-	background-color:  	rgba(36,39,58,0.90);
+	background-color:  	rgba(30,30,46,0.90);
 	transparency:		"real";
     width: 600px;
     location: center;
- 	border:           	2px;
+ 	border:           	3px;
  	border-color:		@blue;
-    border-radius:  	14px;  
+    border-radius:  	8px;  
     padding:          	14px; 
 }
 
@@ -45,13 +45,11 @@ mainbox {
 }
 
 inputbar {
-    background-color:  	@surface0;
-    border-radius:  	12px;
+    background-color:  	@base;
+    border-radius:  	8px;
 	children:   		[ prompt, entry ];
 	padding:    		8px 16px;
     spacing:    		8px;   
-    border: 0px 0px 2px 0px;
-    border-color : @blue;
 }
 
 prompt {
