@@ -5,7 +5,7 @@ configuration {
 }
 
 window {
-	border:           	2px;
+	border:           	3px;
 	border-color:		@blue;
 	modi: 				"drun,run";
 	show-icons: 		true;
@@ -32,7 +32,7 @@ listview {
 	border: 	0; 
 	columns:  	1;
 	flow: 		vertical;
-    lines:    	5;
+    lines:    	4;
 	scrollbar:	false;  
     spacing:  	14px;         
 }
