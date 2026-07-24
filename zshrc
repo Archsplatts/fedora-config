@@ -3,13 +3,13 @@ export EDITOR="micro"
 export MICRO_TRUECOLOR=1
 
 # --- Fedora --- #
-alias dnfi="sudo dnf install"
-alias dnflist="dnf repoquery --installed > Info/dnflist"
-alias dnfr="sudo dnf remove"
-alias dnfs="dnf search"
-alias dnfu="sudo dnf upgrade --refresh -y"
-alias orphans="sudo dnf autoremove -y"
-alias qi="rpm -qi"
+alias add="sudo dnf install"
+alias info="rpm -qi"
+alias list="dnf repoquery --installed > $HOME/Documents/list"
+alias orphans="sudo dnf autoremove"
+alias remove="sudo dnf remove"
+alias search="dnf search"
+alias update="sudo dnf upgrade --refresh -y"
 
 # --- Fichiers --- #
 alias bar="yazi .config/waybar"
