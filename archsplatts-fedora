@@ -142,6 +142,7 @@ cp -r config/* ~/.config
 cp -r appearance/* ~/.scripts
 cp zshrc ~/.zshrc
 chmod u+x ~/.scripts/papirus-folders
+chmod u+x ~/.config/mango/autostart
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo -e "${JAUNE}[9/9] Catppuccin papirus folders${NC}"
