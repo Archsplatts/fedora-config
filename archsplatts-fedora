@@ -124,6 +124,7 @@ mkdir -p ~/.scripts
 cd ~/fedora-config
 cp -r config/* ~/.config
 cp -r appearance/* ~/.scripts
+cp zshrc ~/.zshrc
 chmod u+x ~/.scripts/papirus-folders
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
