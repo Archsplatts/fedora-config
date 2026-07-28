@@ -1,20 +1,10 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
-# Définition des couleurs
 VERT='\033[0;32m'
-ROUGE='\033[0;31m'
 JAUNE='\033[1;33m'
 NC='\033[0m'
-
-# Vérification des droits root
-if [ "$EUID" -ne 0 ]; then 
-  echo -e "${ROUGE}Veuillez lancer ce script avec sudo ou en root.${NC}"
-  exit 1
-fi   
-
-USER="$SUDO_USER"
 
 echo -e "${VERT}                                   ▄▄                    ${NC}"
 echo -e "${VERT}                  █▄                ██       █▄  █▄      ${NC}"
@@ -32,84 +22,53 @@ if [ -t 0 ]; then
 fi   
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[1/7] Mise à jour de Fedora${NC}"
+echo -e "${JAUNE}[1/9] Mise à jour de Fedora${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
-if dnf upgrade --refresh -y; then
-    echo -e "${VERT}✓ Mise à jour terminée avec succès.${NC}"
-else
-    echo -e "${ROUGE}✗ Échec de la mise à jour.${NC}"
-    exit 1
-fi
+sudo dnf upgrade --refresh -y
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[2/7] Activation du dépôt RPM Fusion${NC}"
+echo -e "${JAUNE}[2/9] Activation du dépôt RPM Fusion${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
-if dnf install "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm";then
-   echo -e "${VERT}✓ Dépôts RPM activés avec succès.${NC}"
-else
-    echo -e "${ROUGE}✗ Échec de l'activation des dépôts RPM.${NC}"
-    exit 1
-fi
+sudo dnf install -y \
+  https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+  https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[3/7] Installation des pilotes video & codecs${NC}"
+echo -e "${JAUNE}[3/9] Installation des pilotes & codecs${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
-if dnf swap ffmpeg-free ffmpeg --allowerasing;then
-	echo -e "${VERT}✓ Installation de ffmpeg réussie.${NC}"
-else
-	echo -e "${ROUGE}✗ Echec de l'Installation de ffmpeg.${NC}"
- exit 1
-fi
+sudo dnf swap ffmpeg-free ffmpeg --allowerasing
 
-if dnf update @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin;then
-	echo -e "${VERT}✓ Installation des codecs additionels réussie.${NC}"
-else
-	echo -e "${ROUGE}✗ Echec de l'Installation des codecs additionels.${NC}"
- exit 1
-fi
+sudo dnf update @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
 
-if dnf install -y mesa-va-drivers-freeworld mesa-va-drivers-freeworld.i686;then
-	echo -e "${VERT}✓ Installation des codecs mesa réussie.${NC}"
-else
-	echo -e "${ROUGE}✗ Echec de l'installation des codecs mesa.${NC}"
-exit 1
-fi
+sudo dnf install -y mesa-va-drivers-freeworld mesa-va-drivers-freeworld.i686
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[4/7] Activation du dépôt terra${NC}"
+echo -e "${JAUNE}[4/9] Activation du dépôt terra${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
-if dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release;then
-echo -e "${VERT}✓ Activation du dépôt terra réussi.${NC}"
-else
-	echo -e "${ROUGE}✗ Echec de l'activation du dépôt terra.${NC}"
-exit 1
-fi
+sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[5/7] Installation des paquets terra${NC}"
+echo -e "${JAUNE}[5/9] Installation des paquets terra${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 PAQUETS_TERRA=(
 	"lact" 
+	"mangowm"
 	"nwg-look"
 	"starship"
 	"ubuntu-nerd-fonts"
 	"ubuntumono-nerd-fonts"
 	"yazi"
 )
-if dnf install -y "${PAQUETS_TERRA[@]}";then
-echo -e "${VERT}✓ Installation des paquets terra réussie.${NC}"
-else
-	echo -e "${ROUGE}✗ Echec de l'installation des paquets terra.${NC}"
-exit 1
-fi
+
+sudo dnf install -y "${PAQUETS_TERRA[@]}"
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[6/7] Installation des utilitaires${NC}"
+echo -e "${JAUNE}[6/9] Installation des utilitaires${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 PAQUETS_UTILS=(
@@ -148,26 +107,33 @@ PAQUETS_UTILS=(
 	"zoxide"
 )
 
-echo -e "${JAUNE}Installation des utilitaires${NC}\n"
-
-if dnf install -y "${PAQUETS_UTILS[@]}"; then
-    echo -e "${VERT}✓ Utilitaires installés avec succès.${NC}"
-else
-    echo -e "${ROUGE}✗ Échec de l'installation.${NC}"
-    exit 1
-fi
+sudo dnf install -y "${PAQUETS_UTILS[@]}"
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[7/7] Configuration du shell Zsh${NC}"
+echo -e "${JAUNE}[7/9] Configuration du shell Zsh${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
-if getent passwd "$USER" | grep -q "/bin/zsh$"; then
-    echo -e "${VERT}✓ Le shell est déjà Zsh pour $USER. Aucune action requise.${NC}"
-else
-    echo "Changement du shell vers Zsh..."
-    chsh -s /bin/zsh "$USER"
-    echo -e "${VERT}✓ Shell changé avec succès.${NC}"
-fi
+chsh -s /bin/zsh 
+
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${JAUNE}[8/9] Copie des dotfiles${NC}"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
+
+mkdir -p ~/.config
+mkdir -p ~/.scripts
+cd ~/fedora-config
+cp -r config/* ~/.config
+cp -r appearance/* ~/.scripts
+chmod u+x ~/.scripts/papirus-folders
+
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${JAUNE}[9/9] Catppuccin papirus folders${NC}"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
+
+git clone https://github.com/catppuccin/papirus-folders.git
+cd papirus-folders
+sudo cp -r src/* /usr/share/icons/Papirus
+~/.scripts/papirus-folders -C cat-mocha-blue
 
 echo -e "${VERT}╔════════════════════════════════════════╗${NC}"
 echo -e "${VERT}║  Installation terminée avec succès !   ║${NC}"
