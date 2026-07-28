@@ -40,9 +40,7 @@ echo -e "${JAUNE}[3/9] Installation des pilotes & codecs${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 sudo dnf swap ffmpeg-free ffmpeg --allowerasing
-
 sudo dnf update @multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
-
 sudo dnf install -y mesa-va-drivers-freeworld mesa-va-drivers-freeworld.i686
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
