@@ -138,10 +138,12 @@ echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━
 
 mkdir -p ~/.config
 mkdir -p ~/.scripts
+mkdir -p ~/Images/Wallpapers
 cd ~/fedora-config
 cp -r config/* ~/.config
 cp -r appearance/* ~/.scripts
 cp zshrc ~/.zshrc
+cp koi.jpg ~/Images/Wallpapers/koi.jpg
 chmod u+x ~/.scripts/papirus-folders
 chmod u+x ~/.config/mango/autostart
 
