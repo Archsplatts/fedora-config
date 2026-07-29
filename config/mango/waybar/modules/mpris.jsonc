@@ -1,0 +1,15 @@
+{
+	"custom/media": {
+	  "format": "{}",
+	  "return-type": "json",
+	  "max-length": 100,
+	  "on-click": "playerctl play-pause",
+	  "on-click-right": "playerctl next",
+	  "on-click-middle": "playerctl previous",
+	  "smooth-scrolling": true,
+	  "exec": "$HOME/.config/mango/waybar/scripts/media",
+	  "exec-if": "pgrep playerctl",
+	  "interval": 1
+	}
+	
+}
