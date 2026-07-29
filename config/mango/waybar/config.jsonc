@@ -5,7 +5,7 @@
 	"spacing": 5,
 	"reload_style_on_change": true,
 	
-	"modules-left": [ "custom/menu", "dwl/window" ],
+	"modules-left": [ "custom/menu", "mango/window" ],
 
 	"modules-center": [ "group/clock-tags" ],
 	
@@ -29,7 +29,7 @@
      }
 	},
 	
- "dwl/window": {
+ "mango/window": {
     "format": "{}",
     "icon": true,
     "icon-size": 20,
