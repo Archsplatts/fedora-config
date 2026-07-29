@@ -1,4 +1,4 @@
-Script post installation Fedora avec une configuration Sway
+Script post installation Fedora avec une configuration Mango
 
 ![script](preview.png)
 
@@ -6,7 +6,7 @@ Script post installation Fedora avec une configuration Sway
 
 Barre d'état: waybar <br> 
 Lanceur: rofi <br> 
-Gestion des fenêtres: sway <br> 
+Gestion des fenêtres: mango,sway <br> 
 Notifications: mako <br> 
 
 # --- Terminal & shell --- #
