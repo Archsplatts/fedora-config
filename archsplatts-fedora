@@ -146,6 +146,7 @@ cp zshrc ~/.zshrc
 cp koi.jpg ~/Images/Wallpapers/koi.jpg
 chmod u+x ~/.scripts/papirus-folders
 chmod u+x ~/.config/mango/autostart
+chmod u+x ~/.config/mango/waybar/scripts/dnf-status
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo -e "${JAUNE}[9/10] Catppuccin papirus folders${NC}"
