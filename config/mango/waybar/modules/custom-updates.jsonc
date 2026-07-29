@@ -9,8 +9,8 @@
         	"has-updates": "\u00A0󰊠\u00A0\u00A0",
         	"updated": "\u00A0󰊠\u00A0\u00A0"
     },
-    	"exec": "$HOME/.config/mango/waybar/scripts/checkupdates",
-		"on-click": "foot -e sudo pacman -Syu; pkill -SIGRTMIN+1 waybar",
-    	"on-click-right": "$HOME/.config/mango/waybar/scripts/checkupdates; pkill -SIGRTMIN+1 waybar"
+    	"exec": "$HOME/.config/mango/waybar/scripts/dnf-status",
+		"on-click": "foot -e sudo dnf upgrade --refresh -y; pkill -SIGRTMIN+1 waybar",
+    	"on-click-right": "$HOME/.config/mango/waybar/scripts/dnf-status; pkill -SIGRTMIN+1 waybar"
 	}
 }	
