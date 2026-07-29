@@ -22,13 +22,13 @@ if [ -t 0 ]; then
 fi   
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[1/9] Mise à jour de Fedora${NC}"
+echo -e "${JAUNE}[1/10] Mise à jour de Fedora${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 sudo dnf upgrade --refresh -y
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[2/9] Activation du dépôt RPM Fusion${NC}"
+echo -e "${JAUNE}[2/10] Activation du dépôt RPM Fusion${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 sudo dnf install -y \
@@ -36,20 +36,20 @@ sudo dnf install -y \
   https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[3/9] Installation des pilotes & codecs${NC}"
+echo -e "${JAUNE}[3/10] Installation des pilotes & codecs${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 sudo dnf swap ffmpeg-free ffmpeg --allowerasing
 sudo dnf install -y mesa-va-drivers-freeworld mesa-va-drivers-freeworld.i686
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[4/9] Activation du dépôt terra${NC}"
+echo -e "${JAUNE}[4/10] Activation du dépôt terra${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[5/9] Installation des paquets terra${NC}"
+echo -e "${JAUNE}[5/10] Installation des paquets terra${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 PAQUETS_TERRA=(
@@ -65,7 +65,7 @@ PAQUETS_TERRA=(
 sudo dnf install -y "${PAQUETS_TERRA[@]}"
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[6/9] Installation des utilitaires${NC}"
+echo -e "${JAUNE}[6/10] Installation des utilitaires${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 PAQUETS_UTILS=(
@@ -127,13 +127,13 @@ PAQUETS_UTILS=(
 sudo dnf install -y "${PAQUETS_UTILS[@]}"
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[7/9] Configuration du shell Zsh${NC}"
+echo -e "${JAUNE}[7/10] Configuration du shell Zsh${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 chsh -s /bin/zsh 
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[8/9] Copie des dotfiles${NC}"
+echo -e "${JAUNE}[8/10] Copie des dotfiles${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 mkdir -p ~/.config
@@ -146,13 +146,20 @@ chmod u+x ~/.scripts/papirus-folders
 chmod u+x ~/.config/mango/autostart
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[9/9] Catppuccin papirus folders${NC}"
+echo -e "${JAUNE}[9/10] Catppuccin papirus folders${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 git clone https://github.com/catppuccin/papirus-folders.git
 cd papirus-folders
 sudo cp -r src/* /usr/share/icons/Papirus
 ~/.scripts/papirus-folders -C cat-mocha-blue
+
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${JAUNE}[10/10] Activation de l'interface graphique${NC}"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
+
+sudo systemctl enable sddm
+sudo systemctl set-default graphical.target
 
 echo -e "${VERT}╔════════════════════════════════════════╗${NC}"
 echo -e "${VERT}║  Installation terminée avec succès !   ║${NC}"
