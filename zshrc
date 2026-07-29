@@ -12,12 +12,12 @@ alias search="dnf search"
 alias update="sudo dnf upgrade --refresh -y"
 
 # --- Fichiers --- #
-alias bar="yazi .config/waybar"
-alias cdt="cd ~/Téléchargements"
-alias conf="yazi .config"
+alias bar="yazi $HOME/.config/waybar"
+alias cdt="cd $HOME/Téléchargements"
+alias conf="yazi $HOME/.config"
 alias fm="yazi"
 alias info="yazi Info"
-alias rof="yazi .config/rofi"
+alias rof="yazi $HOME/.config/rofi"
 
 # --- Système --- #
 alias cache="dust .cache"
@@ -25,14 +25,14 @@ alias error="journalctl -p 3 -xb"
 alias firmwares="fwupdmgr --force refresh && fwupdmgr get-updates"
 alias rm="trash -v"
 alias update-grub="sudo grub2-mkconfig -o /etc/grub2.cfg"
-alias zshrc="micro .zshrc && source ~/.zshrc"
+alias zshrc="micro $HOME/.zshrc && source $HOME/.zshrc"
 
 # --- Utilitaires --- #
 alias c="clear"
 alias ff="fastfetch"
 alias ls="eza"
-alias pfl="~/.scripts/papirus-folders -l"
-alias pfc="~/.scripts/papirus-folders -C"
+alias pfl="$HOME/.scripts/papirus-folders -l"
+alias pfc="$HOME/.scripts/papirus-folders -C"
 alias wipe="cliphist wipe && rm -r ~/.cache/cliphist/db"
 
 # Lines configured by zsh-newuser-install
