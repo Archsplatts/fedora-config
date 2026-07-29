@@ -1,133 +1,27 @@
 {
+	"include": ["$HOME/.config/mango/waybar/modules/*.jsonc"],
+
 	"layer": "top",
 	"position": "top",
 	"height": 30,
-	"spacing": 5,
+	"spacing": 0,
 	"reload_style_on_change": true,
 	
-	"modules-left": [ "custom/menu", "mango/window" ],
+	"modules-left": ["ext/workspaces"],
 
-	"modules-center": [ "group/clock-tags" ],
+	"modules-center": [
+		"custom/updates",
+		"custom/circle3",
+		"pulseaudio",
+		"custom/circle4",
+		"custom/menu",
+		"custom/circle5",
+		"clock",
+		"custom/circle6",
+		"disk#ssd"],
 	
-	"modules-right": [ "group/power-tray" ],
-
-	"custom/menu": {
-		"format": "",
-		"on-click": "rofi -show drun -config $HOME/.config/rofi/applications-menu.rasi",
-		"tooltip": false
-	},
-
-  "ext/workspaces": {
-	 "num-tags": 3,
-	 "format": "{icon}",
-     "format-icons": {
-        "1": "",
-        "2": "",
-        "3": "",
-        "active": "󰮯",
-        "default": ""
-     }
-	},
-	
- "mango/window": {
-    "format": "{}",
-    "icon": true,
-    "icon-size": 20,
-    "max-length": 35
-},
-
-	"clock": {
-		"locale": "fr_FR.UTF-8",
-		"format": "   {:%H:%M  |}",
-		"tooltip-format": "{calendar}",
-		"tooltip-delay": 0, 
-	          "calendar": {
-	              "mode": "month",
-	              "on-scroll": 1,
-	              "format": {
-	                  "months": "<span color='#cba6f7'><b>{}</b></span>",
-	                  "days": "<span color='#cdd6f4'><b>{}</b></span>",
-	  	              "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
-	                  "today": "<span color='#f5e0dc'><b><u>{}</u></b></span>"
-	          },
-	    },
-		"interval": 60,
-		"timezone": "Europe/Paris",
-		"on-click": "foot calcurse"
-	},    
-
-	"pulseaudio": {
-    	"format": "{icon}",
-    	"format-bluetooth": "{icon}",
-    	"format-muted": "󰕿",
-    	"format-icons": {
-        	"alsa_output.pci-0000_00_1f.3.analog-stereo": "",
-        	"alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
-        	"headphone": "󰋋",
-        	"hands-free": "",
-        	"headset": "",
-        	"phone": "",
-        	"phone-muted": "",
-        	"portable": "",
-        	"car": "",
-        	"default": ["󰖀", "󰕾"]
-    },
-    "scroll-step": 1,
-    "on-click": "pavucontrol",
-    "ignored-sinks": ["Easy Effects Sink"]
-	},
-
-   	"tray": {
-    	"icon-size": 20,
-    	"spacing": 8
-    },
-
-	"custom/power": {
-		"format": "",
-		"icon-size": 19,
-		"on-click": "$HOME/.config/rofi/scripts/powermenu",
-		"tooltip-format": "Power Menu"
-	},
-
-	"disk#ssd": {
-		"interval": 60,
-		"format": "󰋊 {percentage_used}%",
-		"warning": 70,
-		"critical": 80,
-		"tooltip": true,
-		"tooltip-format": "{specific_used:.0f} Go utilisés",
-		"unit": "GB",
-		"on-click": "foot --hold dust"
-	},
-
-	"memory": {
-		"interval": 30,
-		"format": "  {used:0.1f}G",
-		"max-length": 10,
-		"on-click": "foot --hold btop",
-		"tooltip": false
-	},
-
-	"cpu": {
-		"interval": 10,
-		"format": "  {usage}%",
-		"on-click": "foot --hold btop",
-		"tooltip": false	
-	},
-
-	"group/power-tray": {
-		 "orientation": "horizontal",
-		 "modules": [ "pulseaudio", "tray", "custom/power" ]
-	},
-
-	"group/clock-tags": {
-		 "orientation": "horizontal",
-		 "modules": [ "clock", "ext/workspaces" ]
-	},
-
-	"group/monitor": {
-		"orientation": "horizontal",
-		"modules": [ "disk#ssd", "cpu", "memory" ]
-	},
-
+	"modules-right": [
+		"wlr/taskbar",
+		"tray",
+ 		"network"]
 }
