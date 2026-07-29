@@ -145,7 +145,7 @@ cp -r appearance/* ~/.scripts
 cp zshrc ~/.zshrc
 cp koi.jpg ~/Images/Wallpapers/koi.jpg
 chmod u+x ~/.scripts/papirus-folders
-chmod u+x ~/.config/mango/autostart
+chmod u+x ~/.config/mango/autostart.sh
 chmod u+x ~/.config/mango/waybar/scripts/dnf-status
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
