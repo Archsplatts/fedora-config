@@ -74,6 +74,7 @@ PAQUETS_UTILS=(
 	"calcurse"
 	"cliphist"
 	"discord"
+	"du-dust"
 	"eza"
 	"fastfetch"
 	"ffmpegthumbnailer"
