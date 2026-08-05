@@ -3,11 +3,11 @@ export EDITOR="micro"
 export MICRO_TRUECOLOR=1
 
 # --- Fedora --- #
-alias add="sudo dnf install"
+alias add="sudo dnf install -y"
+alias del="sudo dnf remove"
 alias info="rpm -qi"
 alias list="dnf repoquery --installed > $HOME/Documents/list"
 alias orphans="sudo dnf autoremove"
-alias remove="sudo dnf remove"
 alias search="dnf search"
 alias update="sudo dnf upgrade --refresh -y"
 
