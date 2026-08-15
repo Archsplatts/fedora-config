@@ -2,7 +2,7 @@ export BAT_THEME="Catppuccin Mocha"
 export EDITOR="micro"
 export MICRO_TRUECOLOR=1
 
-##   DNF
+## DNF
 alias add="sudo dnf install -y"
 alias del="sudo dnf remove"
 alias info="rpm -qi"
