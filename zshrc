@@ -2,7 +2,7 @@ export BAT_THEME="Catppuccin Mocha"
 export EDITOR="micro"
 export MICRO_TRUECOLOR=1
 
-# --- Fedora --- #
+##   DNF
 alias add="sudo dnf install -y"
 alias del="sudo dnf remove"
 alias info="rpm -qi"
@@ -11,7 +11,7 @@ alias orphans="sudo dnf autoremove"
 alias search="dnf search"
 alias update="sudo dnf upgrade --refresh -y"
 
-# --- Fichiers --- #
+## Fichiers
 alias bar="yazi $HOME/.config/waybar"
 alias cdt="cd $HOME/Téléchargements"
 alias conf="yazi $HOME/.config"
@@ -19,18 +19,19 @@ alias fm="yazi"
 alias info="yazi Info"
 alias rof="yazi $HOME/.config/rofi"
 
-# --- Système --- #
+## Système
 alias cache="dust .cache"
 alias error="journalctl -p 3 -xb"
 alias firmwares="fwupdmgr --force refresh && fwupdmgr get-updates"
 alias rm="trash -v"
+alias sv="systemctl list-unit-files --state=enabled"
 alias update-grub="sudo grub2-mkconfig -o /etc/grub2.cfg"
 alias zshrc="micro $HOME/.zshrc && source $HOME/.zshrc"
 
-# --- Utilitaires --- #
+## Utilitaires
 alias c="clear"
 alias ff="fastfetch"
-alias ls="eza"
+alias ls="eza --icons -1 --group-directories-first"
 alias pfl="$HOME/.scripts/papirus-folders -l"
 alias pfc="$HOME/.scripts/papirus-folders -C"
 alias wipe="cliphist wipe && rm -r ~/.cache/cliphist/db"
