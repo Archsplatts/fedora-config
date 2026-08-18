@@ -4,7 +4,7 @@ output=$(dnf check-update --quiet 2>/dev/null)
 result=$?
 
 if [ $result -eq 100 ]; then
-    count=$(echo "$output" | grep -c "^[a-zA-Z0-9]")
+    count=$(echo "$output" | wc -l)
     
     notify-send -u normal \
         --icon=update-notifier \
