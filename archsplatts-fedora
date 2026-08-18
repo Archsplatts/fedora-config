@@ -15,44 +15,36 @@ echo -e "${VERT}▄▀█▄██▄█▀  ▄▀███▄▄██ ██�
 echo -e "${VERT}                              ██                         ${NC}"
 echo -e "${VERT}                              ▀                          ${NC}"
 
-echo -e "${JAUNE}Bienvenue dans le script de configuration Archsplatts pour Fedora !${NC}\n"
+echo -e "${JAUNE}Bienvenue dans le script de configuration Archsplatts pour Fedora!${NC}\n"
 
 if [ -t 0 ]; then
     read -p "Appuyez sur Entrée pour continuer... "
 fi   
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[1/10] Mise à jour de Fedora${NC}"
+echo -e "${JAUNE}[1/8] Mise à jour de Fedora${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 sudo dnf upgrade --refresh -y
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[2/10] Activation du dépôt RPM Fusion${NC}"
+echo -e "${JAUNE}[2/8] RPM Fusion & codecs${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 sudo dnf install -y \
   https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
   https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[3/10] Installation des pilotes & codecs${NC}"
-echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
-
 sudo dnf swap ffmpeg-free ffmpeg --allowerasing
 sudo dnf install -y mesa-va-drivers-freeworld mesa-va-drivers-freeworld.i686
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[4/10] Activation du dépôt terra${NC}"
+echo -e "${JAUNE}[3/8] Dépôt Terra & paquets${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 
-echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[5/10] Installation des paquets terra${NC}"
-echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
-
-PAQUETS_TERRA=(
+TERRA_PKGS=(
 	"lact" 
 	"mangowm"
 	"nwg-look"
@@ -62,82 +54,93 @@ PAQUETS_TERRA=(
 	"yazi"
 )
 
-sudo dnf install -y "${PAQUETS_TERRA[@]}"
+sudo dnf install -y "${TERRA_PKGS[@]}"
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[6/10] Installation des utilitaires${NC}"
+echo -e "${JAUNE}[4/8] Installation des applications${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
-PAQUETS_UTILS=(
-	"bat"
-	"btop"
-	"calcurse"
-	"cliphist"
+APPS_PKGS=(
 	"discord"
-	"du-dust"
-	"eza"
-	"fastfetch"
-	"ffmpegthumbnailer"
 	"firefox"
-	"flameshot"
 	"foot"
 	"galculator"
-	"gamemode"
-	"gammastep"
-	"geany"
 	"gnome-disk-utility"
-	"grim"
 	"helvum"
-	"java-25-openjdk"
-	"kernel-modules-extra"
 	"lollypop"	
-	"mako"
-	"mangohud"
 	"mediawriter"
-	"micro"
 	"mpv"
 	"nm-connection-editor"
-	"papirus-icon-theme"
 	"pavucontrol"
 	"qbittorrent"
 	"rhythmbox"
 	"ristretto"
 	"rofi"
 	"sddm"
-	"slurp"
-	"swaybg"
-	"swaylock"
 	"steam"
 	"thunar"
 	"thunar-archive-plugin"
 	"thunar-volman"
 	"thunderbird"
-	"trash-cli"
 	"waybar"
-	"wl-clipboard"
 	"wmenu"
+	"zathura"
+	"zathura-pdf-mupdf"
+)
+
+sudo dnf install -y "${APPS_PKGS[@]}"
+
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo -e "${JAUNE}[5/8] Installation des utilitaires${NC}"
+echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
+
+UTILS_PKGS=(
+	"bat"
+	"btop"
+	"calcurse"
+	"cliphist"
+	"du-dust"
+	"eza"
+	"fastfetch"
+	"ffmpegthumbnailer"
+	"flameshot"
+	"gamemode"
+	"gammastep"
+	"grim"
+	"java-25-openjdk"
+	"kernel-modules-extra"
+	"mako"
+	"mangohud"
+	"micro"
+	"papirus-icon-theme"
+	"slurp"
+	"swaybg"
+	"swaylock"
+	"trash-cli"
+	"wl-clipboard"
 	"webkit2gtk4.1-devel"
 	"xdg-desktop-portal-gtk" 
 	"xdg-desktop-portal-wlr" 
 	"xfce-polkit"
-	"zathura"
-	"zathura-pdf-mupdf"
 	"zsh"
 	"zsh-autosuggestions"
 	"zsh-syntax-highlighting"
 	"zoxide"
 )
 
-sudo dnf install -y "${PAQUETS_UTILS[@]}"
+sudo dnf install -y "${UTILS_PKGS[@]}"
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[7/10] Configuration du shell Zsh${NC}"
+echo -e "${JAUNE}[6/8] Shell & interface graphique${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 chsh -s /bin/zsh 
 
+sudo systemctl enable sddm
+sudo systemctl set-default graphical.target
+
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[8/10] Copie des dotfiles${NC}"
+echo -e "${JAUNE}[7/8] Copie des dotfiles${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 mkdir -p $HOME/.config
@@ -156,20 +159,13 @@ chmod u+x $HOME/.config/mango/waybar/scripts/*
 chmod u+x $HOME/.config/rofi/scripts/*
 
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[9/10] Catppuccin papirus folders${NC}"
+echo -e "${JAUNE}[8/8] Catppuccin papirus folders${NC}"
 echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
 
 git clone https://github.com/catppuccin/papirus-folders.git
 cd papirus-folders
 sudo cp -r src/* /usr/share/icons/Papirus
 $HOME/.scripts/papirus-folders -C cat-mocha-blue
-
-echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${JAUNE}[10/10] Activation de l'interface graphique${NC}"
-echo -e "${JAUNE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}\n"
-
-sudo systemctl enable sddm
-sudo systemctl set-default graphical.target
 
 echo -e "${VERT}╔════════════════════════════════════════╗${NC}"
 echo -e "${VERT}║  Installation terminée avec succès !   ║${NC}"
