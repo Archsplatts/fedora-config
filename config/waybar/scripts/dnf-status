@@ -1,12 +1,21 @@
 #!/bin/bash
 
-dnf check-update --quiet &>/dev/null
+output=$(dnf check-update --quiet 2>/dev/null)
 result=$?
 
 if [ $result -eq 100 ]; then
-    echo '{"text": "MàJ", "alt": "update", "tooltip": "Mises à jour disponibles"}'
+    count=$(echo "$output" | grep -c "^[a-zA-Z0-9]")
+    
+    notify-send -u normal \
+        --icon=update-notifier \
+        "Mises à jour disponibles" \
+        "$count paquets à mettre à jour"
+
+    echo "{\"text\": \"MàJ\", \"alt\": \"update\", \"tooltip\": \"$count mises à jour disponibles\"}"
+
 elif [ $result -eq 0 ]; then
-    echo '{"text": "À jour", "alt": "ok", "tooltip": "Système à jour"}'
+    echo "{\"text\": \"À jour\", \"alt\": \"ok\", \"tooltip\": \"Système à jour\"}"
+
 else
-    echo '{"text": "Err", "alt": "error", "tooltip": "Erreur de vérification"}'
+    echo "{\"text\": \"Err\", \"alt\": \"error\", \"tooltip\": \"Erreur de vérification DNF\"}"
 fi   
